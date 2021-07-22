@@ -10,33 +10,33 @@ const UserForm = () => {
 
     return (
         <form className='form'>
-            <p className='for-item'>
+            <p className='form-item'>
                 <label htmlFor="name">Your name</label>
                 <input
                     id='name'
                     type="text"
                     name='name'
                     required
-                    className='for-item__input'
+                    className='form-item__input'
                     placeholder='Your name'
                     onChange={event => setName(event.target.value)}
                 />
             </p>
 
-            <p className='for-item'>
+            <p className='form-item'>
                 <label htmlFor="email">Your email</label>
                 <input
                     id='email'
                     type="text"
                     name='email'
                     required
-                    className='for-item__input'
+                    className='form-item__input'
                     placeholder='Your email'
                     onChange={event => setEmail(event.target.value)}
                 />
             </p>
 
-            <p className='for-item'>
+            <p className='form-item'>
                 <label htmlFor="size">Size</label>
                 <select
                     name="size"
@@ -50,8 +50,8 @@ const UserForm = () => {
                 </select>
             </p>
 
-            <p className='for-item'>
-                <span className='for-item__date'>
+            <p className='form-item'>
+                <span className='form-item__date'>
                     <label htmlFor="date">Choose a date</label>
                     <input
                         id='date'
@@ -61,12 +61,12 @@ const UserForm = () => {
                         name='date'
                         value='2021-07-21'
                         required
-                        className='for-item__input'
+                        className='form-item__input'
                         onChange={event => setDate(event.target.value)}
                     />
                 </span>
                 
-                <span className="for-item__time">
+                <span className="form-item__time">
                     <label htmlFor="time">Choose a time</label>
                     <input
                         id='time'
@@ -75,7 +75,7 @@ const UserForm = () => {
                         type="time"
                         name='time'
                         required
-                        className='for-item__input'
+                        className='form-item__input'
                         onChange={event => setTime(event.target.value)}
                     />
                 </span>
