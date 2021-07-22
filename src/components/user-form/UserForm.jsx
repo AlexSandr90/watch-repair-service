@@ -50,7 +50,7 @@ const UserForm = () => {
                 </select>
             </p>
 
-            <p className='form-item'>
+            <p className='form-item time-block'>
                 <span className='form-item__date'>
                     <label htmlFor="date">Choose a date</label>
                     <input
@@ -82,6 +82,7 @@ const UserForm = () => {
             </p>
 
             <input
+                className='form-submit__btn'
                 type="submit"
                 onClick={event => {
                     event.preventDefault();
@@ -90,6 +91,7 @@ const UserForm = () => {
 
                     return res;
                 }}
+                value='Submit'
             />
         </form>
     );

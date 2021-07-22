@@ -1,5 +1,6 @@
-import {CLIENTS_INITIAL_STATE} from "../initialState";
-const INITIAL_STATE = CLIENTS_INITIAL_STATE;
+import client from "../client.data";
+
+const INITIAL_STATE = client;
 
 const clientReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {

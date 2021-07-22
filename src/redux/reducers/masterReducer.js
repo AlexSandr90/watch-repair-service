@@ -1,6 +1,6 @@
-import { MASTERS_INITIAL_STATE } from "../initialState";
+import masters from "../masters.data";
 
-const INITIAL_STATE = MASTERS_INITIAL_STATE;
+const INITIAL_STATE = masters;
 
 const masterReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {

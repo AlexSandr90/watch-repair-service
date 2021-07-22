@@ -2,14 +2,20 @@
   display: flex;
   flex-direction: column;
   max-width: 500px;
+  padding: 2rem;
+  border-radius: 10px;
+  background-color: #f6f2f6;
   width: 100%;
   margin: 0 auto;
+  webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6);
+  -moz-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6);
+  box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6);
 
   .form-item {
     display: flex;
     flex-direction: column;
     height: 75px;
-    justify-content: space-around;
+    justify-content: space-between;
     font-size: 1.1rem;
 
     label {
@@ -28,6 +34,51 @@
         max-width: 500px;
         padding-left: 50px;
       }
+    }
+  }
+
+  .time-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .form-item__date,
+    .form-item__time {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      height: 75px;
+      flex-basis: 49%;
+
+      label {
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  .form-submit__btn {
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    outline: none;
+    background-color: #c0ccc5;
+    border: none;
+    color: #0b0e38;
+    border-radius: 5px;
+    line-height: 2;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6);
+    -moz-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6);
+    box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6);
+    transition: background-color .2s ease-in-out, box-shadow .2s ease-in-out, color .3s ease-in-out;
+    
+    &:hover, &:active {
+      color: #111338;
+      background-color: #faf1ff;
+      -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6) inset;
+      -moz-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6) inset;
+      box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6) inset;
     }
   }
 }
