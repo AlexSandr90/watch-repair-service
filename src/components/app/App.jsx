@@ -1,17 +1,28 @@
 import React from 'react';
 import './app.scss';
 import {useDispatch, useSelector} from "react-redux";
+import Header from "../header";
 import UserForm from "../user-form";
+import Masters from "../masters";
+import {Switch, BrowserRouter as Router, Route} from "react-router-dom";
 
-const App = () => {
+const App = (props) => {
     const dispatch = useDispatch();
     const schedule = useSelector(state => state.schedule);
     console.log(schedule);
+    console.log('App props => ',props);
     return (
-        <div className="app">
-            Happy hacking!
-            <UserForm/>
-        </div>
+        <Router>
+            <div className="app">
+                <Header/>
+                <main>
+                    <Switch>
+                        <Route path='/masters' component={Masters} />
+                        <Route path='/user-form' component={UserForm} />
+                    </Switch>
+                </main>
+            </div>
+        </Router>
     );
 };
 

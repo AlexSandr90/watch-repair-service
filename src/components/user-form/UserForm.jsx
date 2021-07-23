@@ -1,17 +1,77 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './user-from.scss';
 
 const UserForm = () => {
-    const [ name, setName ] = useState('');
-    const [ email, setEmail ] = useState('');
-    const [ size, setSize ] = useState('');
-    const [ date, setDate ] = useState('');
-    const [ time, setTime ] = useState('');
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [nameDirty, setNameDirty] = useState(false);
+    const [nameError, setNameError] = useState('Имя не может быть пустым');
+    const [emailDirty, setEmailDirty] = useState(false);
+    const [emailError, setEmailError] = useState('Email не может быть пустым');
+
+    const [size, setSize] = useState('');
+    const [date, setDate] = useState('');
+    const [time, setTime] = useState('');
+    const [formValid, setFormValid] = useState(false);
+
+
+    useEffect(() => {
+            if (nameError || emailError) {
+                setFormValid(false)
+            } else {
+                setFormValid(true)
+            }
+        }, [nameError, emailError]
+    );
+
+
+    const nameHandler = event => {
+        setName(event.target.value);
+
+        if (event.target.value.length < 2 || event.target.value.length > 16) {
+            setNameError('Длина имени должна быть больше 2 и меньше 16 символов');
+            if (!event.target.value) {
+                setNameError('Имя не может быть пустым');
+            }
+        } else {
+            setNameError('');
+        }
+    };
+
+    const emailHandler = event => {
+        setEmail(event.target.value);
+
+        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        if (!re.test(String(event.target.value).toLowerCase())) {
+            setEmailError('Your email is not correct');
+            if (!event.target.value) {
+                setEmailError('Email не может быть пустым')
+            }
+        } else {
+            setEmailError('');
+        }
+    };
+
+
+    const blurHandler = event => {
+        switch (event.target.name) {
+            case 'name':
+                setNameDirty(true);
+                break;
+            case 'email':
+                setEmailDirty(true);
+                break;
+            default:
+                break;
+        }
+    };
 
     return (
         <form className='form'>
             <p className='form-item'>
                 <label htmlFor="name">Your name</label>
+                {(nameDirty && nameError) && <div style={{color: 'red'}}>{nameError}</div>}
                 <input
                     id='name'
                     type="text"
@@ -19,12 +79,15 @@ const UserForm = () => {
                     required
                     className='form-item__input'
                     placeholder='Your name'
-                    onChange={event => setName(event.target.value)}
+                    value={name}
+                    onChange={event => nameHandler(event)}
+                    onBlur={event => blurHandler(event)}
                 />
             </p>
 
             <p className='form-item'>
                 <label htmlFor="email">Your email</label>
+                {(emailDirty && emailError) && <div style={{color: 'red'}}>{emailError}</div>}
                 <input
                     id='email'
                     type="text"
@@ -32,7 +95,9 @@ const UserForm = () => {
                     required
                     className='form-item__input'
                     placeholder='Your email'
-                    onChange={event => setEmail(event.target.value)}
+                    value={email}
+                    onChange={event => emailHandler(event)}
+                    onBlur={event => blurHandler(event)}
                 />
             </p>
 
@@ -43,7 +108,7 @@ const UserForm = () => {
                     id="size"
                     onChange={event => setSize(event.target.value)}
                 >
-                    <option >Choose size of watch</option>
+                    <option>Choose size of watch</option>
                     <option value="small">Small</option>
                     <option value="medium">Medium</option>
                     <option value="lagre">Large</option>
@@ -65,7 +130,7 @@ const UserForm = () => {
                         onChange={event => setDate(event.target.value)}
                     />
                 </span>
-                
+
                 <span className="form-item__time">
                     <label htmlFor="time">Choose a time</label>
                     <input
@@ -77,6 +142,7 @@ const UserForm = () => {
                         required
                         className='form-item__input'
                         onChange={event => setTime(event.target.value)}
+                        onBlur={event => blurHandler(event)}
                     />
                 </span>
             </p>
@@ -92,6 +158,7 @@ const UserForm = () => {
                     return res;
                 }}
                 value='Submit'
+                disabled={!formValid}
             />
         </form>
     );

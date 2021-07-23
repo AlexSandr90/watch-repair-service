@@ -6,7 +6,7 @@
   border-radius: 10px;
   background-color: #f6f2f6;
   width: 100%;
-  margin: 0 auto;
+  margin: 2rem auto 0;
   webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6);
   -moz-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6);
   box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6);
@@ -60,9 +60,9 @@
     text-transform: uppercase;
     font-size: 1.1rem;
     outline: none;
-    background-color: #c0ccc5;
+    background-color: #2432e8;
     border: none;
-    color: #0b0e38;
+    color: #ffffff;
     border-radius: 5px;
     line-height: 2;
     letter-spacing: 2px;
@@ -74,11 +74,8 @@
     transition: background-color .2s ease-in-out, box-shadow .2s ease-in-out, color .3s ease-in-out;
     
     &:hover, &:active {
-      color: #111338;
-      background-color: #faf1ff;
-      -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6) inset;
-      -moz-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6) inset;
-      box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6) inset;
+      color: #c0ccc5;
+      background-color: #626fff;
     }
   }
 }
