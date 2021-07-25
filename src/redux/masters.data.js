@@ -1,23 +1,45 @@
 const masters = [
     {
+        id: 1,
         name: 'Vasya',
         rating: 3,
         city: 'Dnipro',
         schedule: [
-            {'2021-07-23': [8, 9, 10, 15, 18, 20]},
-            {[`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`]: [8, 9, 10, 15, 18, 20]},
-            {'': []},
+            {
+                id: 1,
+                date: '2021-07-23',
+                hours: [8, 9, 10, 15, 18, 20]},
+            {
+                id: 2,
+                date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`],
+                hours: [8, 9, 10, 15, 18, 20]},
+            {
+                id: 3,
+                date: '',
+                hours: []
+            },
         ]
     },
 
     {
+        id: 2,
         name: 'Petro',
         rating: 4,
         city: 'Dnipro',
         schedule: [
-            {'2021-07-23': [9, 11, 13, 16, 19]},
-            {[`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`]: [8, 11, 15, 18, 20]},
-            {'': []},
+            {
+                id: 1,
+                date: '2021-07-23',
+                hours: [8, 9, 10, 15, 18, 20]},
+            {
+                id: 2,
+                date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`],
+                hours: [8, 9, 10, 15, 18, 20]},
+            {
+                id: 3,
+                date: '',
+                hours: []
+            },
         ]
     },
 ];

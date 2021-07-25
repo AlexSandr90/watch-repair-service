@@ -17,8 +17,9 @@ const App = (props) => {
                 <Header/>
                 <main>
                     <Switch>
-                        <Route path='/masters' component={Masters} />
-                        <Route path='/user-form' component={UserForm} />
+                        <Route exact path='/' render={() => <div>Main</div>} />
+                        <Route axect path='/masters' component={Masters} />
+                        <Route exact path='/user-form' component={UserForm} />
                     </Switch>
                 </main>
             </div>
