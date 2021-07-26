@@ -4,7 +4,6 @@ import masters from "../../redux/masters.data";
 
 const Masters = () => {
     const master = masters.map(item => {
-        // console.log('masters.map.id => ', item.id);
         return (
             <div className="master" key={item.id}>
 
