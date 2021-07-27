@@ -6,18 +6,29 @@ import Master from "./master";
 const Masters = (props) => {
     const { city } = props.state;
     const filterMastersArr = masters.filter(master => master.city === city);
-    // console.log('Masters filterMastersArr --->>>>>>>>>>>', filterMastersArr);
 
-    const master = filterMastersArr.map(item => {
-        return (
-            <Master
-                city={item.city}
-                name={item.name}
-                rating={item.rating}
-                schedule={item.schedule}
-            />
-        )
-    });
+    const master = filterMastersArr.length > 0 ?
+        filterMastersArr.map(item => {
+            return (
+                <Master
+                    city={item.city}
+                    name={item.name}
+                    rating={item.rating}
+                    schedule={item.schedule}
+                />
+            )
+        }) :
+        masters.map(item => {
+            return (
+                <Master
+                    city={item.city}
+                    name={item.name}
+                    rating={item.rating}
+                    schedule={item.schedule}
+                />
+            )
+        });
+
     console.log(master);
 
     return (
