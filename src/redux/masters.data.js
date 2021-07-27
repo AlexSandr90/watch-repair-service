@@ -42,6 +42,182 @@ const masters = [
             },
         ]
     },
+
+    {
+        id: 'Alex_Dnipro-3',
+        name: 'Alex',
+        rating: 5,
+        city: 'Dnipro',
+        schedule: [
+            {
+                id: 'Vasya_Dnipro-3_1',
+                date: [`${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`],
+                hours: [8, 9, 10, 15, 18, 20]},
+            {
+                id: 'Vasya_Dnipro-3_2',
+                date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`],
+                hours: [8, 9, 10, 15, 18, 20]},
+            {
+                id: 'Vasya_Dnipro-3_3',
+                date: '',
+                hours: []
+            },
+        ]
+    },
+
+    {
+        id: 'Vasya_Dnipro-1',
+        name: 'Vasya',
+        rating: 3,
+        city: 'Dnipro',
+        schedule: [
+            {
+                id: 'Vasya_Dnipro-1_1',
+                date: '2021-07-23',
+                hours: [8, 9, 10, 15, 18, 20]},
+            {
+                id: 'Vasya_Dnipro-1_2',
+                date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`],
+                hours: [8, 9, 10, 15, 18, 20]},
+            {
+                id: 'Vasya_Dnipro-1_3',
+                date: '',
+                hours: []
+            },
+        ]
+    },
+
+    {
+        id: 'Vasya_Dnipro-1',
+        name: 'Vasya',
+        rating: 3,
+        city: 'Dnipro',
+        schedule: [
+            {
+                id: 'Vasya_Dnipro-1_1',
+                date: '2021-07-23',
+                hours: [8, 9, 10, 15, 18, 20]},
+            {
+                id: 'Vasya_Dnipro-1_2',
+                date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`],
+                hours: [8, 9, 10, 15, 18, 20]},
+            {
+                id: 'Vasya_Dnipro-1_3',
+                date: '',
+                hours: []
+            },
+        ]
+    },
+
+    {
+        id: 'Vasya_Dnipro-1',
+        name: 'Vasya',
+        rating: 3,
+        city: 'Dnipro',
+        schedule: [
+            {
+                id: 'Vasya_Dnipro-1_1',
+                date: '2021-07-23',
+                hours: [8, 9, 10, 15, 18, 20]},
+            {
+                id: 'Vasya_Dnipro-1_2',
+                date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`],
+                hours: [8, 9, 10, 15, 18, 20]},
+            {
+                id: 'Vasya_Dnipro-1_3',
+                date: '',
+                hours: []
+            },
+        ]
+    },
+
+    {
+        id: 'Vasya_Dnipro-1',
+        name: 'Vasya',
+        rating: 3,
+        city: 'Dnipro',
+        schedule: [
+            {
+                id: 'Vasya_Dnipro-1_1',
+                date: '2021-07-23',
+                hours: [8, 9, 10, 15, 18, 20]},
+            {
+                id: 'Vasya_Dnipro-1_2',
+                date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`],
+                hours: [8, 9, 10, 15, 18, 20]},
+            {
+                id: 'Vasya_Dnipro-1_3',
+                date: '',
+                hours: []
+            },
+        ]
+    },
+
+    {
+        id: 'Vasya_Dnipro-1',
+        name: 'Vasya',
+        rating: 3,
+        city: 'Dnipro',
+        schedule: [
+            {
+                id: 'Vasya_Dnipro-1_1',
+                date: '2021-07-23',
+                hours: [8, 9, 10, 15, 18, 20]},
+            {
+                id: 'Vasya_Dnipro-1_2',
+                date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`],
+                hours: [8, 9, 10, 15, 18, 20]},
+            {
+                id: 'Vasya_Dnipro-1_3',
+                date: '',
+                hours: []
+            },
+        ]
+    },
+
+    {
+        id: 'Vasya_Dnipro-1',
+        name: 'Vasya',
+        rating: 3,
+        city: 'Dnipro',
+        schedule: [
+            {
+                id: 'Vasya_Dnipro-1_1',
+                date: '2021-07-23',
+                hours: [8, 9, 10, 15, 18, 20]},
+            {
+                id: 'Vasya_Dnipro-1_2',
+                date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`],
+                hours: [8, 9, 10, 15, 18, 20]},
+            {
+                id: 'Vasya_Dnipro-1_3',
+                date: '',
+                hours: []
+            },
+        ]
+    },
+
+    {
+        id: 'Vasya_Dnipro-1',
+        name: 'Vasya',
+        rating: 3,
+        city: 'Dnipro',
+        schedule: [
+            {
+                id: 'Vasya_Dnipro-1_1',
+                date: '2021-07-23',
+                hours: [8, 9, 10, 15, 18, 20]},
+            {
+                id: 'Vasya_Dnipro-1_2',
+                date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`],
+                hours: [8, 9, 10, 15, 18, 20]},
+            {
+                id: 'Vasya_Dnipro-1_3',
+                date: '',
+                hours: []
+            },
+        ]
+    },
 ];
 
 export default masters;

@@ -1,0 +1,51 @@
+.master {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+  width: 100%;
+  max-width: 600px;
+  flex-basis: 400px;
+  border: 1px solid #626fff;
+
+  .name, .rating, .city {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    span:first-child {
+      margin-right: 1rem;
+    }
+  }
+
+  .schedule {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 0;
+    margin-left: 0;
+
+    li {
+      list-style-type: none;
+
+      .schedule_in__li {
+        display: flex;
+        width: 100%;
+        max-width: 600px;
+        justify-content: flex-start;
+        padding-left: 0;
+
+        li {
+          margin-right: 1rem;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+}
