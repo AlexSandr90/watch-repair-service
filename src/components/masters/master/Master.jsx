@@ -2,7 +2,7 @@ import React from 'react';
 import './master.scss';
 
 const Master = props => {
-
+    // console.log('Master props => ', props);
     return (
         <div className="master" key={props.id}>
 

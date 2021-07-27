@@ -3,8 +3,12 @@ import './masters.scss';
 import masters from "../../redux/masters.data";
 import Master from "./master";
 
-const Masters = () => {
-    const master = masters.map(item => {
+const Masters = (props) => {
+    const { city } = props.state;
+    const filterMastersArr = masters.filter(master => master.city === city);
+    // console.log('Masters filterMastersArr --->>>>>>>>>>>', filterMastersArr);
+
+    const master = filterMastersArr.map(item => {
         return (
             <Master
                 city={item.city}

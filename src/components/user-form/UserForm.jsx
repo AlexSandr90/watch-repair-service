@@ -1,29 +1,32 @@
 import React, {useEffect, useState} from 'react';
 import './user-from.scss';
+import {useHistory} from 'react-router-dom';
 
-const UserForm = () => {
+const UserForm = props => {
+    const {updateData} = props;
+    const path = '/masters';
+    const history = useHistory();
+
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [nameDirty, setNameDirty] = useState(false);
     const [nameError, setNameError] = useState('Имя не может быть пустым');
     const [emailDirty, setEmailDirty] = useState(false);
     const [emailError, setEmailError] = useState('Email не может быть пустым');
-
     const [size, setSize] = useState('');
+    const [city, setCity] = useState('');
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
     const [formValid, setFormValid] = useState(false);
 
 
     useEffect(() => {
-            if (nameError || emailError) {
-                setFormValid(false)
-            } else {
-                setFormValid(true)
-            }
-        }, [nameError, emailError]
-    );
-
+        if (nameError || emailError) {
+            setFormValid(false)
+        } else {
+            setFormValid(true)
+        }
+    }, [nameError, emailError]);
 
     const nameHandler = event => {
         setName(event.target.value);
@@ -37,7 +40,6 @@ const UserForm = () => {
             setNameError('');
         }
     };
-
     const emailHandler = event => {
         setEmail(event.target.value);
 
@@ -52,8 +54,6 @@ const UserForm = () => {
             setEmailError('');
         }
     };
-
-
     const blurHandler = event => {
         switch (event.target.name) {
             case 'name':
@@ -65,6 +65,15 @@ const UserForm = () => {
             default:
                 break;
         }
+    };
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        const res = {name, email, size, date, time, city};
+
+        history.push(path);
+        updateData(res);
+        return res;
     };
 
     return (
@@ -79,6 +88,7 @@ const UserForm = () => {
                     required
                     className='form-item__input'
                     placeholder='Your name'
+                    // placeholder={`${props.userName}`}
                     value={name}
                     onChange={event => nameHandler(event)}
                     onBlur={event => blurHandler(event)}
@@ -99,6 +109,24 @@ const UserForm = () => {
                     onChange={event => emailHandler(event)}
                     onBlur={event => blurHandler(event)}
                 />
+            </p>
+
+            <p className="form-item">
+                <label htmlFor="city">City: </label>
+
+                <select
+                    name="city"
+                    id="city"
+                    onChange={event => setCity(event.target.value)}
+                >
+                    <option>Choose your city</option>
+                    <option value="Dnipro">Dnipro</option>
+                    <option value="Lviv">Lviv</option>
+                    <option value="Kyiv">Kyiv</option>
+                    <option value="Ivano-Frankivsk">Ivano-Frankivsk</option>
+                    <option value="Odesa">Odesa</option>
+                    <option value="Kharkiv">Kharkiv</option>
+                </select>
             </p>
 
             <p className='form-item'>
@@ -150,13 +178,7 @@ const UserForm = () => {
             <input
                 className='form-submit__btn'
                 type="submit"
-                onClick={event => {
-                    event.preventDefault();
-                    const res = {name, email, size, date, time};
-                    console.log(res);
-
-                    return res;
-                }}
+                onClick={event => handleSubmit(event)}
                 value='Submit'
                 disabled={!formValid}
             />

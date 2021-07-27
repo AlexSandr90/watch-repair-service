@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './app.scss';
 import {useDispatch, useSelector} from "react-redux";
 import Header from "../header";
@@ -9,8 +9,9 @@ import {Switch, BrowserRouter as Router, Route} from "react-router-dom";
 const App = (props) => {
     const dispatch = useDispatch();
     const schedule = useSelector(state => state.schedule);
-    console.log(schedule);
-    console.log('App props => ',props);
+    const [ state, setState ] = useState({});
+
+
     return (
         <Router>
             <div className="app">
@@ -18,8 +19,8 @@ const App = (props) => {
                 <main>
                     <Switch>
                         <Route exact path='/' render={() => <div>Main</div>} />
-                        <Route axect path='/masters' component={Masters} />
-                        <Route exact path='/user-form' component={UserForm} />
+                        <Route axect path='/masters' render={() => <Masters state={state} />} />
+                        <Route exact path='/user-form' render={() => <UserForm updateData={setState} />} />
                     </Switch>
                 </main>
             </div>

@@ -66,21 +66,21 @@ const masters = [
     },
 
     {
-        id: 'Vasya_Dnipro-1',
+        id: 'Vasya_Kyiv-1',
         name: 'Vasya',
-        rating: 3,
-        city: 'Dnipro',
+        rating: 4,
+        city: 'Kyiv',
         schedule: [
             {
-                id: 'Vasya_Dnipro-1_1',
+                id: 'Vasya_Kyiv-1_1',
                 date: '2021-07-23',
                 hours: [8, 9, 10, 15, 18, 20]},
             {
-                id: 'Vasya_Dnipro-1_2',
+                id: 'Vasya_Kyiv-1_2',
                 date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`],
                 hours: [8, 9, 10, 15, 18, 20]},
             {
-                id: 'Vasya_Dnipro-1_3',
+                id: 'Vasya_Kyiv-1_3',
                 date: '',
                 hours: []
             },
@@ -88,21 +88,21 @@ const masters = [
     },
 
     {
-        id: 'Vasya_Dnipro-1',
-        name: 'Vasya',
+        id: 'Kolya_Kyiv-1',
+        name: 'Kolya',
         rating: 3,
-        city: 'Dnipro',
+        city: 'Kyiv',
         schedule: [
             {
-                id: 'Vasya_Dnipro-1_1',
+                id: 'Kolya_Kyiv-1_1',
                 date: '2021-07-23',
                 hours: [8, 9, 10, 15, 18, 20]},
             {
-                id: 'Vasya_Dnipro-1_2',
+                id: 'Kolya_Kyiv-1_2',
                 date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`],
                 hours: [8, 9, 10, 15, 18, 20]},
             {
-                id: 'Vasya_Dnipro-1_3',
+                id: 'Kolya_Kyiv-1_3',
                 date: '',
                 hours: []
             },
@@ -110,21 +110,21 @@ const masters = [
     },
 
     {
-        id: 'Vasya_Dnipro-1',
+        id: 'Vasya_Lviv-1',
         name: 'Vasya',
-        rating: 3,
-        city: 'Dnipro',
+        rating: 5,
+        city: 'Lviv',
         schedule: [
             {
-                id: 'Vasya_Dnipro-1_1',
+                id: 'Vasya_Lviv-1_1',
                 date: '2021-07-23',
                 hours: [8, 9, 10, 15, 18, 20]},
             {
-                id: 'Vasya_Dnipro-1_2',
+                id: 'Vasya_Lviv-1_2',
                 date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`],
                 hours: [8, 9, 10, 15, 18, 20]},
             {
-                id: 'Vasya_Dnipro-1_3',
+                id: 'Vasya_Lviv-1_3',
                 date: '',
                 hours: []
             },
@@ -132,21 +132,21 @@ const masters = [
     },
 
     {
-        id: 'Vasya_Dnipro-1',
+        id: 'Petro_Lviv-1',
         name: 'Vasya',
         rating: 3,
-        city: 'Dnipro',
+        city: 'Lviv',
         schedule: [
             {
-                id: 'Vasya_Dnipro-1_1',
+                id: 'Petro_Lviv-1_1',
                 date: '2021-07-23',
                 hours: [8, 9, 10, 15, 18, 20]},
             {
-                id: 'Vasya_Dnipro-1_2',
+                id: 'Petro_Lviv-1_2',
                 date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`],
                 hours: [8, 9, 10, 15, 18, 20]},
             {
-                id: 'Vasya_Dnipro-1_3',
+                id: 'Petro_Lviv-1_3',
                 date: '',
                 hours: []
             },
@@ -154,21 +154,21 @@ const masters = [
     },
 
     {
-        id: 'Vasya_Dnipro-1',
+        id: 'Vasya_Ivano-Frankivsk-1',
         name: 'Vasya',
         rating: 3,
-        city: 'Dnipro',
+        city: 'Ivano-Frankivsk',
         schedule: [
             {
-                id: 'Vasya_Dnipro-1_1',
+                id: 'Vasya_Ivano-Frankivsk-1_1',
                 date: '2021-07-23',
                 hours: [8, 9, 10, 15, 18, 20]},
             {
-                id: 'Vasya_Dnipro-1_2',
+                id: 'Vasya_Ivano-Frankivsk-1_2',
                 date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`],
                 hours: [8, 9, 10, 15, 18, 20]},
             {
-                id: 'Vasya_Dnipro-1_3',
+                id: 'Vasya_Ivano-Frankivsk-1_3',
                 date: '',
                 hours: []
             },
@@ -176,21 +176,21 @@ const masters = [
     },
 
     {
-        id: 'Vasya_Dnipro-1',
-        name: 'Vasya',
+        id: 'Petro_Ivano-Frankivsk-1',
+        name: 'Petro',
         rating: 3,
-        city: 'Dnipro',
+        city: 'Ivano-Frankivsk',
         schedule: [
             {
-                id: 'Vasya_Dnipro-1_1',
+                id: 'Petro_Ivano-Frankivsk-1_1',
                 date: '2021-07-23',
                 hours: [8, 9, 10, 15, 18, 20]},
             {
-                id: 'Vasya_Dnipro-1_2',
+                id: 'Petro_Ivano-Frankivsk-1_2',
                 date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`],
                 hours: [8, 9, 10, 15, 18, 20]},
             {
-                id: 'Vasya_Dnipro-1_3',
+                id: 'Petro_Ivano-Frankivsk-1_3',
                 date: '',
                 hours: []
             },
@@ -198,21 +198,87 @@ const masters = [
     },
 
     {
-        id: 'Vasya_Dnipro-1',
+        id: 'Vasya_Odesa-1',
         name: 'Vasya',
         rating: 3,
-        city: 'Dnipro',
+        city: 'Odesa',
         schedule: [
             {
-                id: 'Vasya_Dnipro-1_1',
+                id: 'Vasya_Odesa-1_1',
                 date: '2021-07-23',
                 hours: [8, 9, 10, 15, 18, 20]},
             {
-                id: 'Vasya_Dnipro-1_2',
+                id: 'Vasya_Odesa-1_2',
                 date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`],
                 hours: [8, 9, 10, 15, 18, 20]},
             {
-                id: 'Vasya_Dnipro-1_3',
+                id: 'Vasya_Odesa-1_3',
+                date: '',
+                hours: []
+            },
+        ]
+    },
+
+    {
+        id: 'Petro_Odesa-1',
+        name: 'Petro',
+        rating: 3,
+        city: 'Odesa',
+        schedule: [
+            {
+                id: 'Petro_Odesa-1_1',
+                date: '2021-07-23',
+                hours: [8, 9, 10, 15, 18, 20]},
+            {
+                id: 'Petro_Odesa-1_2',
+                date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`],
+                hours: [8, 9, 10, 15, 18, 20]},
+            {
+                id: 'Petro_Odesa-1_3',
+                date: '',
+                hours: []
+            },
+        ]
+    },
+
+    {
+        id: 'Vasya_Kharkiv-1',
+        name: 'Vasya',
+        rating: 3,
+        city: 'Kharkiv',
+        schedule: [
+            {
+                id: 'Vasya_Kharkiv-1_1',
+                date: '2021-07-23',
+                hours: [8, 9, 10, 15, 18, 20]},
+            {
+                id: 'Vasya_Kharkiv-1_2',
+                date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`],
+                hours: [8, 9, 10, 15, 18, 20]},
+            {
+                id: 'Vasya_Kharkiv-1_3',
+                date: '',
+                hours: []
+            },
+        ]
+    },
+
+    {
+        id: 'Petro_Kharkiv-1',
+        name: 'Petro',
+        rating: 3,
+        city: 'Kharkiv',
+        schedule: [
+            {
+                id: 'Petro_Kharkiv-1_1',
+                date: '2021-07-23',
+                hours: [8, 9, 10, 15, 18, 20]},
+            {
+                id: 'Petro_Kharkiv-1_2',
+                date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`],
+                hours: [8, 9, 10, 15, 18, 20]},
+            {
+                id: 'Petro_Kharkiv-1_3',
                 date: '',
                 hours: []
             },
