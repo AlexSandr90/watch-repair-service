@@ -1,6 +1,41 @@
 import React, {useEffect, useState} from 'react';
 import './user-from.scss';
 import {useHistory} from 'react-router-dom';
+import {Input, Select} from "./form-elements";
+
+
+// const Input = props => {
+//     const {
+//         name,
+//         type,
+//         value,
+//         labelText,
+//         inputDirty,
+//         inputError,
+//         placeholderText,
+//         blurHandlerInput,
+//         changeHandlerInput,
+//     } = props;
+//
+//     return (
+//         <div className='form-item'>
+//             <label htmlFor={name}>{labelText}</label>
+//             <input
+//                 id={name}
+//                 type={type}
+//                 name={`${name}`}
+//                 required
+//                 className='form-item__input'
+//                 placeholder={placeholderText}
+//                 defaultValue={''}
+//                 value={`${value}`}
+//                 onChange={changeHandlerInput}
+//                 onBlur={blurHandlerInput}
+//             />
+//             {(inputDirty && inputError) && <div style={{color: 'red'}}>{inputError}</div>}
+//         </div>
+//     )
+// };
 
 const UserForm = props => {
     const {updateData} = props;
@@ -14,17 +49,17 @@ const UserForm = props => {
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
 
-    const [emailError, setEmailError] = useState('Email не может быть пустым');
     const [nameError, setNameError] = useState('Имя не может быть пустым');
-    const [cityError, setCityError] = useState('Поле CITY не может быть пустым');
+    const [emailError, setEmailError] = useState('Email не может быть пустым');
     const [sizeError, setSizeError] = useState('Поле SIZE не может быть пустым');
+    const [cityError, setCityError] = useState('Поле CITY не может быть пустым');
     const [dateError, setDateError] = useState('Выберите дату');
     const [timeError, setTimeError] = useState('Выберите время');
 
     const [nameDirty, setNameDirty] = useState(false);
     const [emailDirty, setEmailDirty] = useState(false);
-    const [cityDirty, setCityDirty] = useState(false);
     const [sizeDirty, setSizeDirty] = useState(false);
+    const [cityDirty, setCityDirty] = useState(false);
     const [dateDirty, setDateDirty] = useState(false);
     const [timeDirty, setTimeDirty] = useState(false);
 
@@ -67,42 +102,24 @@ const UserForm = props => {
             setEmailError('');
         }
     };
+    const formInputHandler = (event, dataSetter, errorSetter, textError) => {
+        dataSetter(event.target.value);
+
+        if (!event.target.value) {
+            errorSetter(textError);
+        } else {
+            errorSetter('')
+        }
+    };
     const cityHandler = event => {
         setCity(event.target.value);
 
-        if (!event.target.value) {
-            setCityError('Поле CITY не может быть пустым')
+        if (!event.city.target.value) {
+            cityError('Поле CITY не может быть пустым');
         } else {
-            setCityError('')
+            cityError('');
         }
-    };
-    const sizeHandler = event => {
-        setSize(event.target.value);
-
-        if (!event.target.value) {
-            setSizeError('Поле SIZE не может быть пустым');
-        } else {
-            setSizeError('');
-        }
-    };
-    const dateHandler = event => {
-        setDate(event.target.value);
-
-        if (!event.target.value) {
-            setDateError('Выберите дату');
-        } else {
-            setDateError('')
-        }
-    };
-    const timeHandler = event => {
-        setTime(event.target.time);
-
-        if (!event.target.value) {
-            setTimeError('Выберите время')
-        } else {
-            setTimeError('')
-        }
-    };
+    }
     const blurHandler = event => {
         switch (event.target.name) {
             case 'name':
@@ -136,68 +153,70 @@ const UserForm = props => {
         return res;
     };
 
+
     return (
         <form className='form'>
-            <p className='form-item'>
-                <label htmlFor="name">Your name</label>
-                {(nameDirty && nameError) && <div style={{color: 'red'}}>{nameError}</div>}
-                <input
-                    id='name'
-                    type="text"
-                    name='name'
-                    required
-                    className='form-item__input'
-                    placeholder='Your name'
-                    value={name}
-                    onChange={event => nameHandler(event)}
-                    onBlur={event => blurHandler(event)}
-                />
-            </p>
+            <Input
+                name={'name'}
+                labelText='Your name'
+                type='text'
+                value={name}
+                placeholderText='Your name'
+                changeHandlerInput={nameHandler}
+                blurHandlerInput={blurHandler}
+                inputDirty={nameDirty}
+                inputError={nameError}
+            />
 
-            <p className='form-item'>
-                <label htmlFor="email">Your email</label>
-                {(emailDirty && emailError) && <div style={{color: 'red'}}>{emailError}</div>}
-                <input
-                    id='email'
-                    type="text"
-                    name='email'
-                    required
-                    className='form-item__input'
-                    placeholder='Your email'
-                    value={email}
-                    onChange={event => emailHandler(event)}
-                    onBlur={event => blurHandler(event)}
-                />
-            </p>
+            <Input
+                name={'email'}
+                labelText='Your email'
+                type='text'
+                value={email}
+                placeholderText='Your email'
+                changeHandlerInput={emailHandler}
+                blurHandlerInput={blurHandler}
+                inputDirty={emailDirty}
+                inputError={emailError}
+            />
 
-            <p className="form-item">
-                <label htmlFor="city">City: </label>
-                {(cityDirty && cityError) && <div style={{color: 'red'}}>{cityError}</div>}
-                <select
-                    id="city"
-                    name="city"
-                    required
-                    onChange={event => cityHandler(event)}
-                    onBlur={event => blurHandler(event)}
-                >
-                    <option>Choose your city</option>
-                    <option value="Dnipro">Dnipro</option>
-                    <option value="Lviv">Lviv</option>
-                    <option value="Kyiv">Kyiv</option>
-                    <option value="Ivano-Frankivsk">Ivano-Frankivsk</option>
-                    <option value="Odesa">Odesa</option>
-                    <option value="Kharkiv">Kharkiv</option>
-                </select>
-            </p>
+            <Select
+                name={`${city}`}
+                labelText={'City:'}
+                blurHandlerSelect={blurHandler}
+                formInputHandlerSelect={cityHandler}
+                optionText={'Choose your city'}
+                selectDirty={cityDirty}
+                selectError={cityError}
+            />
+
+            {/*<p className="form-item">*/}
+            {/*    <label htmlFor="city">City: </label>*/}
+            {/*    <select*/}
+            {/*        id="city"*/}
+            {/*        name="city"*/}
+            {/*        required*/}
+            {/*        onChange={event => formInputHandler(event, setCity, setCityError, 'Поле CITY не может быть пустым')}*/}
+            {/*        onBlur={event => blurHandler(event)}*/}
+            {/*    >*/}
+            {/*        <option>Choose your city</option>*/}
+            {/*        <option value="Dnipro">Dnipro</option>*/}
+            {/*        <option value="Lviv">Lviv</option>*/}
+            {/*        <option value="Kyiv">Kyiv</option>*/}
+            {/*        <option value="Ivano-Frankivsk">Ivano-Frankivsk</option>*/}
+            {/*        <option value="Odesa">Odesa</option>*/}
+            {/*        <option value="Kharkiv">Kharkiv</option>*/}
+            {/*    </select>*/}
+            {/*    {(cityDirty && cityError) && <div style={{color: 'red'}}>{cityError}</div>}*/}
+            {/*</p>*/}
 
             <p className='form-item'>
                 <label htmlFor="size">Size</label>
-                {(sizeDirty && sizeError) && <div style={{color: 'red'}}>{sizeError}</div>}
                 <select
                     id="size"
                     name="size"
                     required
-                    onChange={event => sizeHandler(event)}
+                    onChange={event => formInputHandler(event, setSize, setSizeError, 'Поле SIZE не может быть пустым')}
                     onBlur={event => blurHandler(event)}
                 >
                     <option>Choose size of watch</option>
@@ -205,34 +224,35 @@ const UserForm = props => {
                     <option value="medium">Medium</option>
                     <option value="lagre">Large</option>
                 </select>
+                {(sizeDirty && sizeError) && <div style={{color: 'red'}}>{sizeError}</div>}
             </p>
 
             <p className='form-item time-block'>
                 <span className='form-item__date'>
                     <label htmlFor="date">Choose a date</label>
-                    {(dateDirty && dateError) && <div style={{color: 'red'}}>{dateError}</div>}
                     <input
                         id='date' required
                         min='2021-07-21' max='2021-12-30'
                         type="date" name='date'
                         value='2021-07-21'
                         className='form-item__input'
-                        onChange={event => dateHandler(event)}
+                        onChange={event => formInputHandler(event, setDate, setDateError, 'Выберите дату')}
                         onBlur={event => blurHandler(event)}
                     />
+                    {(dateDirty && dateError) && <div style={{color: 'red'}}>{dateError}</div>}
                 </span>
 
                 <span className="form-item__time">
                     <label htmlFor="time">Choose a time</label>
-                    {(timeDirty && timeError) && <div style={{color: 'red'}}>{timeError}</div>}
                     <input
                         id='time' required
                         min='08:00' max='20:00'
                         type="time" name='time'
                         className='form-item__input'
-                        onChange={event => timeHandler(event)}
+                        onChange={event => formInputHandler(event, setTime, setTimeError, 'Выберите время')}
                         onBlur={event => blurHandler(event)}
                     />
+                    {(timeDirty && timeError) && <div style={{color: 'red'}}>{timeError}</div>}
                 </span>
             </p>
 
