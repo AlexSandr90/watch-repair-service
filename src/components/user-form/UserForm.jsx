@@ -3,40 +3,6 @@ import './user-from.scss';
 import {useHistory} from 'react-router-dom';
 import {Input, Select} from "./form-elements";
 
-
-// const Input = props => {
-//     const {
-//         name,
-//         type,
-//         value,
-//         labelText,
-//         inputDirty,
-//         inputError,
-//         placeholderText,
-//         blurHandlerInput,
-//         changeHandlerInput,
-//     } = props;
-//
-//     return (
-//         <div className='form-item'>
-//             <label htmlFor={name}>{labelText}</label>
-//             <input
-//                 id={name}
-//                 type={type}
-//                 name={`${name}`}
-//                 required
-//                 className='form-item__input'
-//                 placeholder={placeholderText}
-//                 defaultValue={''}
-//                 value={`${value}`}
-//                 onChange={changeHandlerInput}
-//                 onBlur={blurHandlerInput}
-//             />
-//             {(inputDirty && inputError) && <div style={{color: 'red'}}>{inputError}</div>}
-//         </div>
-//     )
-// };
-
 const UserForm = props => {
     const {updateData} = props;
     const path = '/masters';
@@ -114,12 +80,23 @@ const UserForm = props => {
     const cityHandler = event => {
         setCity(event.target.value);
 
-        if (!event.city.target.value) {
-            cityError('Поле CITY не может быть пустым');
+        if (!event.target.value) {
+            setCityError('Поле CITY не может быть пустым');
         } else {
-            cityError('');
+            setCityError('');
         }
-    }
+    };
+
+    const sizeHandler = event => {
+        setSize(event.target.value);
+
+        if (!event.target.value) {
+            setSizeError('Поле SIZE не может быть пустым');
+        } else {
+            setSizeError('');
+        }
+    };
+
     const blurHandler = event => {
         switch (event.target.name) {
             case 'name':
@@ -181,51 +158,28 @@ const UserForm = props => {
             />
 
             <Select
-                name={`${city}`}
+                name={`city`}
                 labelText={'City:'}
                 blurHandlerSelect={blurHandler}
                 formInputHandlerSelect={cityHandler}
                 optionText={'Choose your city'}
                 selectDirty={cityDirty}
                 selectError={cityError}
+                optionsArray={['Dnipro', 'Lviv', 'Kyiv', 'Ivano-Frankivsk', 'Odesa', 'Kharkiv']}
             />
 
-            {/*<p className="form-item">*/}
-            {/*    <label htmlFor="city">City: </label>*/}
-            {/*    <select*/}
-            {/*        id="city"*/}
-            {/*        name="city"*/}
-            {/*        required*/}
-            {/*        onChange={event => formInputHandler(event, setCity, setCityError, 'Поле CITY не может быть пустым')}*/}
-            {/*        onBlur={event => blurHandler(event)}*/}
-            {/*    >*/}
-            {/*        <option>Choose your city</option>*/}
-            {/*        <option value="Dnipro">Dnipro</option>*/}
-            {/*        <option value="Lviv">Lviv</option>*/}
-            {/*        <option value="Kyiv">Kyiv</option>*/}
-            {/*        <option value="Ivano-Frankivsk">Ivano-Frankivsk</option>*/}
-            {/*        <option value="Odesa">Odesa</option>*/}
-            {/*        <option value="Kharkiv">Kharkiv</option>*/}
-            {/*    </select>*/}
-            {/*    {(cityDirty && cityError) && <div style={{color: 'red'}}>{cityError}</div>}*/}
-            {/*</p>*/}
+            <Select
+                name={`size`}
+                labelText={'Size'}
+                blurHandlerSelect={blurHandler}
+                formInputHandlerSelect={sizeHandler}
+                optionText={'Choose size of watch'}
+                selectDirty={sizeDirty}
+                selectError={sizeError}
+                optionsArray={['Small', 'Medium', 'Lagre']}
+            />
 
-            <p className='form-item'>
-                <label htmlFor="size">Size</label>
-                <select
-                    id="size"
-                    name="size"
-                    required
-                    onChange={event => formInputHandler(event, setSize, setSizeError, 'Поле SIZE не может быть пустым')}
-                    onBlur={event => blurHandler(event)}
-                >
-                    <option>Choose size of watch</option>
-                    <option value="small">Small</option>
-                    <option value="medium">Medium</option>
-                    <option value="lagre">Large</option>
-                </select>
-                {(sizeDirty && sizeError) && <div style={{color: 'red'}}>{sizeError}</div>}
-            </p>
+
 
             <p className='form-item time-block'>
                 <span className='form-item__date'>

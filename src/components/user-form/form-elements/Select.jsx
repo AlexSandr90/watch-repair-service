@@ -2,16 +2,19 @@ import React from 'react';
 import './form-elements.scss';
 
 const Select = props => {
-
+    console.log('Select ===== >  ', props);
     const {
         name,
         labelText,
-        blurHandlerSelect,
-        formInputHandlerSelect,
         optionText,
         selectDirty,
-        selectError
+        selectError,
+        optionsArray,
+        blurHandlerSelect,
+        formInputHandlerSelect
     } = props;
+
+    console.log(`selectDirty: ${selectDirty}, selectDirty => ${selectDirty}`);
 
     return (
         <div className="form-item">
@@ -20,17 +23,17 @@ const Select = props => {
                 id={name}
                 name={`${name}`}
                 required
-                // onChange={event => formInputHandler(event, setCity, setCityError, 'Поле CITY не может быть пустым')}
                 onChange={formInputHandlerSelect}
                 onBlur={blurHandlerSelect}
             >
                 <option>{optionText}</option>
-                <option value="Dnipro">Dnipro</option>
-                <option value="Lviv">Lviv</option>
-                <option value="Kyiv">Kyiv</option>
-                <option value="Ivano-Frankivsk">Ivano-Frankivsk</option>
-                <option value="Odesa">Odesa</option>
-                <option value="Kharkiv">Kharkiv</option>
+                {
+                    optionsArray.map(optionItem => {
+                        return (
+                            <option key={optionItem} value={optionItem} style={{textTransform: 'capitalize'}}>{optionItem}</option>
+                        )
+                    })
+                }
             </select>
             {(selectDirty && selectError) && <div style={{color: 'red'}}>{selectError}</div>}
         </div>
