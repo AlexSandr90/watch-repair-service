@@ -16,7 +16,7 @@ const Input = props => {
     } = props;
 
     return (
-        <div className='form-item'>
+        <>
             <label htmlFor={name}>{labelText}</label>
             <input
                 id={name}
@@ -31,7 +31,7 @@ const Input = props => {
                 onBlur={blurHandlerInput}
             />
             {(inputDirty && inputError) && <div style={{color: 'red'}}>{inputError}</div>}
-        </div>
+        </>
     )
 };
 

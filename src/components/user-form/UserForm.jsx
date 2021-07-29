@@ -133,67 +133,87 @@ const UserForm = props => {
 
     return (
         <form className='form'>
-            <Input
-                name={'name'}
-                labelText='Your name'
-                type='text'
-                value={name}
-                placeholderText='Your name'
-                changeHandlerInput={nameHandler}
-                blurHandlerInput={blurHandler}
-                inputDirty={nameDirty}
-                inputError={nameError}
-            />
 
-            <Input
-                name={'email'}
-                labelText='Your email'
-                type='text'
-                value={email}
-                placeholderText='Your email'
-                changeHandlerInput={emailHandler}
-                blurHandlerInput={blurHandler}
-                inputDirty={emailDirty}
-                inputError={emailError}
-            />
+            <div className="form-item">
+                <Input
+                    name={'name'}
+                    labelText='Your name'
+                    type='text'
+                    value={name}
+                    placeholderText='Your name'
+                    changeHandlerInput={nameHandler}
+                    blurHandlerInput={blurHandler}
+                    inputDirty={nameDirty}
+                    inputError={nameError}
+                />
+            </div>
 
-            <Select
-                name={`city`}
-                labelText={'City:'}
-                blurHandlerSelect={blurHandler}
-                formInputHandlerSelect={cityHandler}
-                optionText={'Choose your city'}
-                selectDirty={cityDirty}
-                selectError={cityError}
-                optionsArray={['Dnipro', 'Lviv', 'Kyiv', 'Ivano-Frankivsk', 'Odesa', 'Kharkiv']}
-            />
+            <div className="form-item">
+                <Input
+                    name={'email'}
+                    labelText='Your email'
+                    type='text'
+                    value={email}
+                    placeholderText='Your email'
+                    changeHandlerInput={emailHandler}
+                    blurHandlerInput={blurHandler}
+                    inputDirty={emailDirty}
+                    inputError={emailError}
+                />
+            </div>
 
-            <Select
-                name={`size`}
-                labelText={'Size'}
-                blurHandlerSelect={blurHandler}
-                formInputHandlerSelect={sizeHandler}
-                optionText={'Choose size of watch'}
-                selectDirty={sizeDirty}
-                selectError={sizeError}
-                optionsArray={['Small', 'Medium', 'Lagre']}
-            />
+            <div className="form-item">
+                <Select
 
+                    name={`city`}
+                    labelText={'City:'}
+                    blurHandlerSelect={blurHandler}
+                    formInputHandlerSelect={cityHandler}
+                    optionText={'Choose your city'}
+                    selectDirty={cityDirty}
+                    selectError={cityError}
+                    optionsArray={['Dnipro', 'Lviv', 'Kyiv', 'Ivano-Frankivsk', 'Odesa', 'Kharkiv']}
+                />
+            </div>
 
+            <div className="form-item">
+                <Select
 
-            <p className='form-item time-block'>
+                    name={`size`}
+                    labelText={'Size'}
+                    blurHandlerSelect={blurHandler}
+                    formInputHandlerSelect={sizeHandler}
+                    optionText={'Choose size of watch'}
+                    selectDirty={sizeDirty}
+                    selectError={sizeError}
+                    optionsArray={['Small', 'Medium', 'Lagre']}
+                />
+            </div>
+
+            <div className='form-item time-block'>
                 <span className='form-item__date'>
-                    <label htmlFor="date">Choose a date</label>
-                    <input
-                        id='date' required
-                        min='2021-07-21' max='2021-12-30'
-                        type="date" name='date'
-                        value='2021-07-21'
-                        className='form-item__input'
-                        onChange={event => formInputHandler(event, setDate, setDateError, 'Выберите дату')}
-                        onBlur={event => blurHandler(event)}
+                    <Input
+                        name={'date'}
+                        labelText='Choose a date'
+                        type='date'
+                        value={'2021-07-21'}
+                        placeholderText='Your name'
+                        changeHandlerInput={nameHandler}
+                        blurHandlerInput={blurHandler}
+                        inputDirty={nameDirty}
+                        inputError={nameError}
                     />
-                    {(dateDirty && dateError) && <div style={{color: 'red'}}>{dateError}</div>}
+                    {/*<label htmlFor="date">Choose a date</label>*/}
+                    {/*<input*/}
+                    {/*    id='date' required*/}
+                    {/*    min='2021-07-21' max='2021-12-30'*/}
+                    {/*    type="date" name='date'*/}
+                    {/*    value='2021-07-21'*/}
+                    {/*    className='form-item__input'*/}
+                    {/*    onChange={event => formInputHandler(event, setDate, setDateError, 'Выберите дату')}*/}
+                    {/*    onBlur={event => blurHandler(event)}*/}
+                    {/*/>*/}
+                    {/*{(dateDirty && dateError) && <div style={{color: 'red'}}>{dateError}</div>}*/}
                 </span>
 
                 <span className="form-item__time">
@@ -208,7 +228,7 @@ const UserForm = props => {
                     />
                     {(timeDirty && timeError) && <div style={{color: 'red'}}>{timeError}</div>}
                 </span>
-            </p>
+            </div>
 
             <input
                 className='form-submit__btn'
