@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './user-from.scss';
 import {useHistory} from 'react-router-dom';
-import {Input, Select} from "./form-elements";
+import {Input, Select, InputDate} from "./form-elements";
 
 const UserForm = props => {
     const {updateData} = props;
@@ -68,15 +68,7 @@ const UserForm = props => {
             setEmailError('');
         }
     };
-    const formInputHandler = (event, dataSetter, errorSetter, textError) => {
-        dataSetter(event.target.value);
 
-        if (!event.target.value) {
-            errorSetter(textError);
-        } else {
-            errorSetter('')
-        }
-    };
     const cityHandler = event => {
         setCity(event.target.value);
 
@@ -86,7 +78,6 @@ const UserForm = props => {
             setCityError('');
         }
     };
-
     const sizeHandler = event => {
         setSize(event.target.value);
 
@@ -94,6 +85,24 @@ const UserForm = props => {
             setSizeError('Поле SIZE не может быть пустым');
         } else {
             setSizeError('');
+        }
+    };
+    const dateHandler = event => {
+        setDate(event.target.value);
+
+        if (!event.target.value) {
+            setDateError('Выберите дату');
+        } else {
+            setDateError('');
+        }
+    };
+    const timeHandler = event => {
+        setTime(event.target.value);
+
+        if (!event.target.value) {
+            setTimeError('Выберите время');
+        } else {
+            setTimeError('');
         }
     };
 
@@ -164,7 +173,6 @@ const UserForm = props => {
 
             <div className="form-item">
                 <Select
-
                     name={`city`}
                     labelText={'City:'}
                     blurHandlerSelect={blurHandler}
@@ -178,7 +186,6 @@ const UserForm = props => {
 
             <div className="form-item">
                 <Select
-
                     name={`size`}
                     labelText={'Size'}
                     blurHandlerSelect={blurHandler}
@@ -192,41 +199,32 @@ const UserForm = props => {
 
             <div className='form-item time-block'>
                 <span className='form-item__date'>
-                    <Input
+                    <InputDate
                         name={'date'}
                         labelText='Choose a date'
                         type='date'
-                        value={'2021-07-21'}
-                        placeholderText='Your name'
-                        changeHandlerInput={nameHandler}
+                        value={'2021-07-30'}
+                        min={'2021-07-30'}
+                        max={'2021-12-30'}
+                        changeHandlerInput={dateHandler}
                         blurHandlerInput={blurHandler}
-                        inputDirty={nameDirty}
-                        inputError={nameError}
+                        inputDirty={dateDirty}
+                        inputError={dateError}
                     />
-                    {/*<label htmlFor="date">Choose a date</label>*/}
-                    {/*<input*/}
-                    {/*    id='date' required*/}
-                    {/*    min='2021-07-21' max='2021-12-30'*/}
-                    {/*    type="date" name='date'*/}
-                    {/*    value='2021-07-21'*/}
-                    {/*    className='form-item__input'*/}
-                    {/*    onChange={event => formInputHandler(event, setDate, setDateError, 'Выберите дату')}*/}
-                    {/*    onBlur={event => blurHandler(event)}*/}
-                    {/*/>*/}
-                    {/*{(dateDirty && dateError) && <div style={{color: 'red'}}>{dateError}</div>}*/}
                 </span>
 
                 <span className="form-item__time">
-                    <label htmlFor="time">Choose a time</label>
-                    <input
-                        id='time' required
-                        min='08:00' max='20:00'
-                        type="time" name='time'
-                        className='form-item__input'
-                        onChange={event => formInputHandler(event, setTime, setTimeError, 'Выберите время')}
-                        onBlur={event => blurHandler(event)}
+                    <InputDate
+                        name={'time'}
+                        labelText='Choose a time'
+                        type='time'
+                        min={'08:00'}
+                        max={'20:00'}
+                        changeHandlerInput={timeHandler}
+                        blurHandlerInput={blurHandler}
+                        inputDirty={timeDirty}
+                        inputError={timeError}
                     />
-                    {(timeDirty && timeError) && <div style={{color: 'red'}}>{timeError}</div>}
                 </span>
             </div>
 
@@ -234,7 +232,7 @@ const UserForm = props => {
                 className='form-submit__btn'
                 type="submit"
                 onClick={event => handleSubmit(event)}
-                value='Submit'
+                value='Find Master'
                 disabled={!formValid}
             />
         </form>
