@@ -2,7 +2,8 @@ import React from 'react';
 import './master.scss';
 
 const Master = props => {
-    // console.log('Master props => ', props);
+    console.log('Master props => ', props);
+    console.log('Master props.schedule ===>>> ',props.schedule);
     return (
         <div className="master" key={props.id}>
 
@@ -19,6 +20,7 @@ const Master = props => {
                 <span>{props.city}</span>
             </p>
             <ul className="schedule">
+
                 Schedule:
                 {
                     props.schedule.map(schedule => {

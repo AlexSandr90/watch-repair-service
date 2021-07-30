@@ -2,7 +2,7 @@ import React from 'react';
 import './form-elements.scss';
 
 const Select = props => {
-    console.log('Select ===== >  ', props);
+    // console.log('Select ===== >  ', props);
     const {
         name,
         labelText,
@@ -14,10 +14,10 @@ const Select = props => {
         formInputHandlerSelect
     } = props;
 
-    console.log(`selectDirty: ${selectDirty}, selectDirty => ${selectDirty}`);
+    // console.log(`selectDirty: ${selectDirty}, selectDirty => ${selectDirty}`);
 
     return (
-        <div className="form-item">
+        <>
             <label htmlFor={name}>{labelText}</label>
             <select
                 id={name}
@@ -30,13 +30,19 @@ const Select = props => {
                 {
                     optionsArray.map(optionItem => {
                         return (
-                            <option key={optionItem} value={optionItem} style={{textTransform: 'capitalize'}}>{optionItem}</option>
+                            <option
+                                key={ optionItem }
+                                value={ optionItem }
+                                style={{textTransform: 'capitalize'}}
+                            >
+                                { optionItem }
+                            </option>
                         )
                     })
                 }
             </select>
             {(selectDirty && selectError) && <div style={{color: 'red'}}>{selectError}</div>}
-        </div>
+        </>
     );
 };
 

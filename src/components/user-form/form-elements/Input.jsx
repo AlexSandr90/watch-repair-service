@@ -10,9 +10,10 @@ const Input = props => {
         labelText,
         inputDirty,
         inputError,
+        defaultValue,
         placeholderText,
         blurHandlerInput,
-        changeHandlerInput,
+        changeHandlerInput
     } = props;
 
     return (
@@ -25,7 +26,7 @@ const Input = props => {
                 required
                 className='form-item__input'
                 placeholder={placeholderText}
-                defaultValue={''}
+                defaultValue={defaultValue}
                 value={`${value}`}
                 onChange={changeHandlerInput}
                 onBlur={blurHandlerInput}

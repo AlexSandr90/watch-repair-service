@@ -15,8 +15,8 @@ const masters = [
                 hours: [8, 9, 10, 15, 18, 20]},
             {
                 id: 'Vasya_Dnipro-1_3',
-                date: '',
-                hours: []
+                date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate() + 10}`],
+                hours: [8, 9, 10, 15, 18, 20]
             },
         ]
     },
@@ -37,8 +37,8 @@ const masters = [
                 hours: [8, 9, 10, 15, 18, 20]},
             {
                 id: 'Petro_Dnipro-2_3',
-                date: '',
-                hours: []
+                date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate() + 10}`],
+                hours: [8, 9, 10, 15, 18, 20]
             },
         ]
     },
@@ -59,8 +59,8 @@ const masters = [
                 hours: [8, 9, 10, 15, 18, 20]},
             {
                 id: 'Vasya_Dnipro-3_3',
-                date: '',
-                hours: []
+                date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate() + 10}`],
+                hours: [8, 9, 10, 15, 18, 20]
             },
         ]
     },
@@ -81,8 +81,8 @@ const masters = [
                 hours: [8, 9, 10, 15, 18, 20]},
             {
                 id: 'Vasya_Kyiv-1_3',
-                date: '',
-                hours: []
+                date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate() + 10}`],
+                hours: [8, 9, 10, 15, 18, 20]
             },
         ]
     },
@@ -103,8 +103,8 @@ const masters = [
                 hours: [8, 9, 10, 15, 18, 20]},
             {
                 id: 'Kolya_Kyiv-1_3',
-                date: '',
-                hours: []
+                date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate() + 10}`],
+                hours: [8, 9, 10, 15, 18, 20]
             },
         ]
     },
@@ -125,8 +125,8 @@ const masters = [
                 hours: [8, 9, 10, 15, 18, 20]},
             {
                 id: 'Vasya_Lviv-1_3',
-                date: '',
-                hours: []
+                date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate() + 10}`],
+                hours: [8, 9, 10, 15, 18, 20]
             },
         ]
     },
@@ -147,8 +147,8 @@ const masters = [
                 hours: [8, 9, 10, 15, 18, 20]},
             {
                 id: 'Petro_Lviv-1_3',
-                date: '',
-                hours: []
+                date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate() + 10}`],
+                hours: [8, 9, 10, 15, 18, 20]
             },
         ]
     },
@@ -169,8 +169,8 @@ const masters = [
                 hours: [8, 9, 10, 15, 18, 20]},
             {
                 id: 'Vasya_Ivano-Frankivsk-1_3',
-                date: '',
-                hours: []
+                date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate() + 10}`],
+                hours: [8, 9, 10, 15, 18, 20]
             },
         ]
     },
@@ -191,8 +191,8 @@ const masters = [
                 hours: [8, 9, 10, 15, 18, 20]},
             {
                 id: 'Petro_Ivano-Frankivsk-1_3',
-                date: '',
-                hours: []
+                date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate() + 10}`],
+                hours: [8, 9, 10, 15, 18, 20]
             },
         ]
     },
@@ -205,7 +205,7 @@ const masters = [
         schedule: [
             {
                 id: 'Vasya_Odesa-1_1',
-                date: '2021-07-23',
+                date: '2021-07-31',
                 hours: [8, 9, 10, 15, 18, 20]},
             {
                 id: 'Vasya_Odesa-1_2',
@@ -213,8 +213,8 @@ const masters = [
                 hours: [8, 9, 10, 15, 18, 20]},
             {
                 id: 'Vasya_Odesa-1_3',
-                date: '',
-                hours: []
+                date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate() + 10}`],
+                hours: [8, 9, 10, 15, 18, 20]
             },
         ]
     },
@@ -235,8 +235,8 @@ const masters = [
                 hours: [8, 9, 10, 15, 18, 20]},
             {
                 id: 'Petro_Odesa-1_3',
-                date: '',
-                hours: []
+                date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate() + 10}`],
+                hours: [8, 9, 10, 15, 18, 20]
             },
         ]
     },
@@ -257,8 +257,8 @@ const masters = [
                 hours: [8, 9, 10, 15, 18, 20]},
             {
                 id: 'Vasya_Kharkiv-1_3',
-                date: '',
-                hours: []
+                date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate() + 10}`],
+                hours: [8, 9, 10, 15, 18, 20]
             },
         ]
     },
@@ -275,12 +275,12 @@ const masters = [
                 hours: [8, 9, 10, 15, 18, 20]},
             {
                 id: 'Petro_Kharkiv-1_2',
-                date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`],
+                date: `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`,
                 hours: [8, 9, 10, 15, 18, 20]},
             {
                 id: 'Petro_Kharkiv-1_3',
-                date: '',
-                hours: []
+                date: [`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate() + 10}`],
+                hours: [8, 9, 10, 15, 18, 20]
             },
         ]
     },

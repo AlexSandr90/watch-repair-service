@@ -11,6 +11,7 @@ const InputDate = props => {
         labelText,
         inputDirty,
         inputError,
+        defaultValue,
         blurHandlerInput,
         changeHandlerInput
     } = props;
@@ -25,9 +26,9 @@ const InputDate = props => {
                 type={type}
                 name={`${name}`}
                 value={`${value}`}
+                defaultValue={defaultValue}
                 required
                 className='form-item__input'
-                defaultValue={''}
                 onBlur={blurHandlerInput}
                 onChange={changeHandlerInput}
             />

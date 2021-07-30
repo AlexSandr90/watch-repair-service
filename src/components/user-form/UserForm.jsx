@@ -148,6 +148,7 @@ const UserForm = props => {
                     name={'name'}
                     labelText='Your name'
                     type='text'
+                    defaultValue={name}
                     value={name}
                     placeholderText='Your name'
                     changeHandlerInput={nameHandler}
@@ -163,6 +164,7 @@ const UserForm = props => {
                     labelText='Your email'
                     type='text'
                     value={email}
+                    defaultValue={email}
                     placeholderText='Your email'
                     changeHandlerInput={emailHandler}
                     blurHandlerInput={blurHandler}
@@ -203,6 +205,7 @@ const UserForm = props => {
                         name={'date'}
                         labelText='Choose a date'
                         type='date'
+                        defaultValue={'2021-07-30'}
                         value={'2021-07-30'}
                         min={'2021-07-30'}
                         max={'2021-12-30'}
@@ -218,6 +221,7 @@ const UserForm = props => {
                         name={'time'}
                         labelText='Choose a time'
                         type='time'
+                        defaultValue={'08:00'}
                         min={'08:00'}
                         max={'20:00'}
                         changeHandlerInput={timeHandler}
