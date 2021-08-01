@@ -228,18 +228,18 @@ const UserForm = props => {
                 />
                 {(timeDirty && timeError) && <div style={{color: 'red'}}>{timeError}</div>}
 
-            {/*<InputDate*/}
-                    {/*    name={'time'}*/}
+                    {/*<InputDate*/}
+                    {/*    name='time'*/}
                     {/*    labelText='Choose a time'*/}
                     {/*    type='time'*/}
-                    {/*    // defaultValue={'08:00'}*/}
-                    {/*    min={'08:00'}*/}
-                    {/*    max={'20:00'}*/}
+                    {/*    nim='08:00'*/}
+                    {/*    max='20:00'*/}
                     {/*    changeHandlerInput={timeHandler}*/}
                     {/*    blurHandlerInput={blurHandler}*/}
                     {/*    inputDirty={timeDirty}*/}
                     {/*    inputError={timeError}*/}
                     {/*/>*/}
+
                 </span>
             </div>
 
