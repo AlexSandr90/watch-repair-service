@@ -3,34 +3,39 @@ import './user-from.scss';
 import {useHistory} from 'react-router-dom';
 import {Input, Select, InputDate} from "./form-elements";
 
-const UserForm = props => {
-    const {updateData} = props;
+const UserForm = ({updateData, ...props}) => {
     const path = '/masters';
     const history = useHistory();
 
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [size, setSize] = useState('');
-    const [city, setCity] = useState('');
-    const [date, setDate] = useState('');
-    const [time, setTime] = useState('');
-
-    const [nameError, setNameError] = useState('Имя не может быть пустым');
-    const [emailError, setEmailError] = useState('Email не может быть пустым');
-    const [sizeError, setSizeError] = useState('Поле SIZE не может быть пустым');
-    const [cityError, setCityError] = useState('Поле CITY не может быть пустым');
-    const [dateError, setDateError] = useState('Выберите дату');
-    const [timeError, setTimeError] = useState('Выберите время');
-
-    const [nameDirty, setNameDirty] = useState(false);
-    const [emailDirty, setEmailDirty] = useState(false);
-    const [sizeDirty, setSizeDirty] = useState(false);
-    const [cityDirty, setCityDirty] = useState(false);
-    const [dateDirty, setDateDirty] = useState(false);
-    const [timeDirty, setTimeDirty] = useState(false);
-
+    const [ formFields, setFormFields ] = useState({
+        name: '',
+        email: '',
+        size: '',
+        city: '',
+        date: '',
+        time: ''
+    });
+    const [ errors, setErrors ] = useState({
+        nameError: 'Имя не может быть пустым',
+        emailError: 'Email не может быть пустым',
+        sizeError: 'Поле SIZE не может быть пустым',
+        cityError: 'Поле CITY не может быть пустым',
+        dateError: 'Выберите дату',
+        timeError: 'Выберите время'
+    });
+    const [ dirty, setDirty ] = useState({
+        nameDirty: false,
+        emailDirty: false,
+        sizeDirty: false,
+        cityDirty: false,
+        dateDirty: false,
+        timeDirty: false,
+    });
     const [formValid, setFormValid] = useState(false);
 
+    const { nameError, emailError, sizeError, cityError, dateError, timeError } = errors;
+    const { nameDirty, emailDirty, sizeDirty, cityDirty, dateDirty, timeDirty } = dirty;
+    const { name, email, size, city, date, time} = formFields;
 
     useEffect(() => {
         if (nameError || emailError || cityError || sizeError || dateError || timeError) {
@@ -43,88 +48,85 @@ const UserForm = props => {
     );
 
     const nameHandler = event => {
-        setName(event.target.value);
+        setFormFields({...formFields, name: event.target.value});
 
         if (event.target.value.length < 2 || event.target.value.length > 16) {
-            setNameError('Длина имени должна быть больше 2 и меньше 16 символов');
+            setErrors({...errors, nameError: 'Длина имени должна быть больше 2 и меньше 16 символов'});
             if (!event.target.value) {
-                setNameError('Имя не может быть пустым');
+                setErrors({...errors, nameError: 'Имя не может быть пустым'});
             }
         } else {
-            setNameError('');
+            setErrors({...errors, nameError: ''});
         }
     };
     const emailHandler = event => {
-        setEmail(event.target.value);
-
+        setFormFields({...formFields, email: event.target.value});
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
         if (!re.test(String(event.target.value).toLowerCase())) {
-            setEmailError('Your email is not correct');
+            setErrors({...errors, emailError: 'Your email is not correct'});
             if (!event.target.value) {
-                setEmailError('Email не может быть пустым')
+                setErrors({...errors, emailError: 'Email не может быть пустым'});
             }
         } else {
-            setEmailError('');
+            setErrors({...errors, emailError: ''});
         }
     };
-
     const cityHandler = event => {
-        setCity(event.target.value);
-
+        setFormFields({...formFields, city: event.target.value});
         if (!event.target.value) {
-            setCityError('Поле CITY не может быть пустым');
+            setErrors({...errors, cityError: 'Поле CITY не может быть пустым'});
         } else {
-            setCityError('');
+            setErrors({...errors, cityError: ''});
         }
     };
     const sizeHandler = event => {
-        setSize(event.target.value);
+        setFormFields({...formFields, size: event.target.value});
 
         if (!event.target.value) {
-            setSizeError('Поле SIZE не может быть пустым');
+            setErrors({...errors, sizeError: 'Поле SIZE не может быть пустым'});
         } else {
-            setSizeError('');
+            setErrors({...errors, sizeError: ''});
         }
     };
     const dateHandler = event => {
-        setDate(event.target.value);
+        setFormFields({...formFields, date: event.target.value});
 
         if (!event.target.value) {
-            setDateError('Выберите дату');
+            setErrors({...errors, dateError: 'Выберите дату'});
         } else {
-            setDateError('');
+            setErrors({...errors, dateError: ''});
         }
     };
     const timeHandler = event => {
-        setTime(event.target.value);
+        setFormFields({...formFields, time: event.target.value});
 
         if (!event.target.value) {
-            setTimeError('Выберите время');
+            setErrors({...errors, timeError: 'Выберите время'});
         } else {
-            setTimeError('');
+            setErrors({...errors, timeError: ''});
         }
     };
 
     const blurHandler = event => {
         switch (event.target.name) {
             case 'name':
-                setNameDirty(true);
+                setDirty({...dirty, nameDirty: true});
                 break;
             case 'email':
-                setEmailDirty(true);
+                setDirty({...dirty, emailDirty: true});
                 break;
             case 'city':
-                setCityDirty(true);
+                setDirty({...dirty, cityDirty: true});
                 break;
             case 'size':
-                setSizeDirty(true);
+                setDirty({...dirty, sizeDirty: true});
                 break;
             case 'date':
-                setDateDirty(true);
+                setDirty({...dirty, dateDirty: true});
                 break;
             case 'time':
-                setTimeDirty(true);
+                setDirty({...dirty, timeDirty: true});
                 break;
             default:
                 break;
@@ -132,11 +134,10 @@ const UserForm = props => {
     };
     const handleSubmit = event => {
         event.preventDefault();
-        const res = {name, email, size, date, time, city};
 
         history.push(path);
-        updateData(res);
-        return res;
+        updateData(formFields);
+        return formFields;
     };
 
 
@@ -175,7 +176,7 @@ const UserForm = props => {
 
             <div className="form-item">
                 <Select
-                    name={`city`}
+                    name={city}
                     labelText={'City:'}
                     blurHandlerSelect={blurHandler}
                     formInputHandlerSelect={cityHandler}
@@ -188,21 +189,21 @@ const UserForm = props => {
 
             <div className="form-item">
                 <Select
-                    name={`size`}
+                    name={size}
                     labelText={'Size'}
                     blurHandlerSelect={blurHandler}
                     formInputHandlerSelect={sizeHandler}
                     optionText={'Choose size of watch'}
                     selectDirty={sizeDirty}
                     selectError={sizeError}
-                    optionsArray={['Small', 'Medium', 'Lagre']}
+                    optionsArray={['Small', 'Medium', 'Large']}
                 />
             </div>
 
             <div className='form-item time-block'>
                 <span className='form-item__date'>
                     <InputDate
-                        name={'date'}
+                        name={date}
                         labelText='Choose a date'
                         type='date'
                         defaultValue={'2021-07-30'}
@@ -221,7 +222,7 @@ const UserForm = props => {
                     <input
                         id='time' required
                         min='08:00' max='20:00'
-                        type="time" name='time'
+                        type={time} name={time}
                         className='form-item__input'
                         onChange={event => timeHandler(event)}
                         onBlur={event => blurHandler(event)}
