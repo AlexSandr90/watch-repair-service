@@ -11,20 +11,17 @@ const App = (props) => {
     const schedule = useSelector(state => state.schedule);
     const [ state, setState ] = useState({});
 
-
     return (
-        <Router>
-            <div className="app">
-                <Header/>
-                <main>
-                    <Switch>
-                        <Route exact path='/' render={() => <div>Main</div>} />
-                        <Route axect path='/masters' render={() => <Masters state={state} />} />
-                        <Route exact path='/user-form' render={() => <UserForm updateData={setState} />} />
-                    </Switch>
-                </main>
-            </div>
-        </Router>
+        <div className="app">
+            <Header/>
+            <main>
+                <Switch>
+                    <Route exact path='/' render={() => <div>Main</div>}/>
+                    <Route axect path='/masters' render={() => <Masters state={state}/>}/>
+                    <Route exact path='/user-form' render={() => <UserForm updateData={setState}/>}/>
+                </Switch>
+            </main>
+        </div>
     );
 };
 

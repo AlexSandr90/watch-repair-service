@@ -2,32 +2,14 @@ import React from 'react';
 import './form-elements.scss';
 
 
-const Input = props => {
-    const {
-        name,
-        type,
-        value,
-        labelText,
-        inputDirty,
-        inputError,
-        defaultValue,
-        placeholderText,
-        blurHandlerInput,
-        changeHandlerInput
-    } = props;
+const Input = ({blurHandlerInput, changeHandlerInput, inputDirty, inputError, ...props}) => {
 
     return (
         <>
-            <label htmlFor={name}>{labelText}</label>
+            <label htmlFor={props.name}>{props.labelText}</label>
             <input
-                id={name}
-                type={type}
-                name={`${name}`}
-                required
+                {...props}
                 className='form-item__input'
-                placeholder={placeholderText}
-                defaultValue={defaultValue}
-                value={`${value}`}
                 onChange={changeHandlerInput}
                 onBlur={blurHandlerInput}
             />

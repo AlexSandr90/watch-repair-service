@@ -20,13 +20,11 @@ const Select = props => {
         <>
             <label htmlFor={name}>{labelText}</label>
             <select
-                id={name}
-                name={`${name}`}
-                required
+                {...props}
                 onChange={formInputHandlerSelect}
                 onBlur={blurHandlerSelect}
             >
-                <option>{optionText}</option>
+                <option disabled selected >{optionText}</option>
                 {
                     optionsArray.map(optionItem => {
                         return (

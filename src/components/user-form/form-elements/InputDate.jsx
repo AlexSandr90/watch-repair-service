@@ -1,33 +1,16 @@
 import React from 'react';
 import './form-elements.scss';
 
-const InputDate = props => {
-    const {
-        min,
-        max,
-        name,
-        type,
-        value,
-        labelText,
-        inputDirty,
-        inputError,
-        defaultValue,
-        blurHandlerInput,
-        changeHandlerInput
-    } = props;
+const InputDate = ({
+                       labelText, inputDirty, inputError,
+                       blurHandlerInput, changeHandlerInput, ...props
+}) => {
 
     return (
         <>
-            <label htmlFor={name}>{labelText}</label>
+            <label htmlFor={props.name}>{labelText}</label>
             <input
-                id={name}
-                min={`${min}`}
-                max={`${max}`}
-                type={type}
-                name={`${name}`}
-                value={`${value}`}
-                defaultValue={defaultValue}
-                required
+                {...props}
                 className='form-item__input'
                 onBlur={blurHandlerInput}
                 onChange={changeHandlerInput}

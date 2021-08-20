@@ -151,7 +151,8 @@ const UserForm = ({updateData, ...props}) => {
                     type='text'
                     defaultValue={name}
                     value={name}
-                    placeholderText='Your name'
+                    required
+                    placeholder='Your name'
                     changeHandlerInput={nameHandler}
                     blurHandlerInput={blurHandler}
                     inputDirty={nameDirty}
@@ -161,12 +162,14 @@ const UserForm = ({updateData, ...props}) => {
 
             <div className="form-item">
                 <Input
-                    name={'email'}
-                    labelText='Your email'
+                    id='email'
                     type='text'
+                    name='email'
+                    labelText='Your email'
+                    required
                     value={email}
                     defaultValue={email}
-                    placeholderText='Your email'
+                    placeholder='Your email'
                     changeHandlerInput={emailHandler}
                     blurHandlerInput={blurHandler}
                     inputDirty={emailDirty}
@@ -176,11 +179,13 @@ const UserForm = ({updateData, ...props}) => {
 
             <div className="form-item">
                 <Select
-                    name={city}
-                    labelText={'City:'}
+                    name='city'
+                    id='city'
+                    required
+                    labelText='City:'
                     blurHandlerSelect={blurHandler}
                     formInputHandlerSelect={cityHandler}
-                    optionText={'Choose your city'}
+                    optionText='Choose your city'
                     selectDirty={cityDirty}
                     selectError={cityError}
                     optionsArray={['Dnipro', 'Lviv', 'Kyiv', 'Ivano-Frankivsk', 'Odesa', 'Kharkiv']}
@@ -189,11 +194,13 @@ const UserForm = ({updateData, ...props}) => {
 
             <div className="form-item">
                 <Select
-                    name={size}
-                    labelText={'Size'}
+                    name='size'
+                    labelText='Size'
+                    required
+                    id='size'
                     blurHandlerSelect={blurHandler}
                     formInputHandlerSelect={sizeHandler}
-                    optionText={'Choose size of watch'}
+                    optionText='Choose size of watch'
                     selectDirty={sizeDirty}
                     selectError={sizeError}
                     optionsArray={['Small', 'Medium', 'Large']}
@@ -203,11 +210,12 @@ const UserForm = ({updateData, ...props}) => {
             <div className='form-item time-block'>
                 <span className='form-item__date'>
                     <InputDate
-                        name={date}
-                        labelText='Choose a date'
+                        name='date'
                         type='date'
+                        labelText='Choose a date'
                         defaultValue={'2021-07-30'}
-                        value={'2021-07-30'}
+                        require
+                        value={date}
                         min={'2021-07-30'}
                         max={'2021-12-30'}
                         changeHandlerInput={dateHandler}
@@ -218,28 +226,21 @@ const UserForm = ({updateData, ...props}) => {
                 </span>
 
                 <span className="form-item__time">
-                    <label htmlFor="time">Choose a time</label>
-                    <input
-                        id='time' required
-                        min='08:00' max='20:00'
-                        type={time} name={time}
-                        className='form-item__input'
-                        onChange={event => timeHandler(event)}
-                        onBlur={event => blurHandler(event)}
-                />
-                {(timeDirty && timeError) && <div style={{color: 'red'}}>{timeError}</div>}
 
-                    {/*<InputDate*/}
-                    {/*    name='time'*/}
-                    {/*    labelText='Choose a time'*/}
-                    {/*    type='time'*/}
-                    {/*    nim='08:00'*/}
-                    {/*    max='20:00'*/}
-                    {/*    changeHandlerInput={timeHandler}*/}
-                    {/*    blurHandlerInput={blurHandler}*/}
-                    {/*    inputDirty={timeDirty}*/}
-                    {/*    inputError={timeError}*/}
-                    {/*/>*/}
+                    <InputDate
+                        id='time'
+                        name='time'
+                        labelText='Choose a time'
+                        required
+                        value={time}
+                        type='time'
+                        min='08:00'
+                        max='20:00'
+                        changeHandlerInput={timeHandler}
+                        blurHandlerInput={blurHandler}
+                        inputDirty={timeDirty}
+                        inputError={timeError}
+                    />
 
                 </span>
             </div>
