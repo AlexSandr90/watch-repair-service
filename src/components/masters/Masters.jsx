@@ -1,6 +1,6 @@
 import React from 'react';
 import './masters.scss';
-import masters from "../../redux/masters.data";
+import masters from "../../redux/data/masters.data";
 import Master from "./master";
 
 const Masters = (props) => {

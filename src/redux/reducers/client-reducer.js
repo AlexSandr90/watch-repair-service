@@ -1,4 +1,4 @@
-import client from "../client.data";
+import client from "../data/clients.data";
 
 const INITIAL_STATE = client;
 
