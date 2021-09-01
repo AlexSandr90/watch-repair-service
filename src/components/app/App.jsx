@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './app.scss';
+import classes from './app.module.scss';
 import {useDispatch, useSelector} from "react-redux";
 import Header from "../header";
 import UserForm from "../user-form";
@@ -13,9 +13,9 @@ const App = (props) => {
     const [ state, setState ] = useState({});
     console.log(schedule);
     return (
-        <div className="app">
+        <div className={classes.app}>
             <Header/>
-            <main>
+            <main className={classes.main_wrap}>
                 <Switch>
                     <Route exact path='/' render={() => <Home/> }/>
                     <Route axect path='/masters' render={() => <Masters state={state}/>}/>
