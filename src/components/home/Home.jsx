@@ -11,7 +11,10 @@ const Home = () => {
 
     const addCity = () => {
         let cityItem = city;
-        dispatch(addFormCityAction(cityItem))
+        if (city.length > 0) {
+            dispatch(addFormCityAction(cityItem))
+            setCity('');
+        }
     };
 
     return (
