@@ -23,7 +23,14 @@ const formData = {
         dateDirty: false,
         timeDirty: false,
     },
-    cities: ['Dnipro', 'Lviv', 'Kyiv', 'Ivano-Frankivsk', 'Odesa', 'Kharkiv'],
+    cities: [
+        {id: 1, city: 'Dnipro'}, 
+        {id: 2, city: 'Lviv'}, 
+        {id: 3, city: 'Kyiv'}, 
+        {id: 4, city: 'Ivano-Frankivsk'}, 
+        {id: 5, city: 'Odesa'}, 
+        {id: 6, city: 'Kharkiv'}
+    ],
     sizes: ['Small', 'Medium', 'Large']
 
 };
