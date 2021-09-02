@@ -10,7 +10,10 @@ const Home = () => {
     const [ city, setCity ] = useState('');
 
     const addCity = () => {
-        let cityItem = city;
+        let cityItem = {
+            id: cities.length + 1,
+            city
+        };
         if (city.length > 0) {
             dispatch(addFormCityAction(cityItem))
             setCity('');

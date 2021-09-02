@@ -9,9 +9,9 @@ import Home from "../home";
 
 const App = (props) => {
     const dispatch = useDispatch();
-    const schedule = useSelector(state => state.schedule);
+    const masters = useSelector(state => state);
     const [ state, setState ] = useState({});
-    console.log(schedule);
+    console.log('App masters ===>>> ', masters);
     return (
         <div className={classes.app}>
             <Header/>
