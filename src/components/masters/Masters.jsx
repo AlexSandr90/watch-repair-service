@@ -4,7 +4,7 @@ import masters from "../../redux/data/masters.data";
 import Master from "./master";
 
 const Masters = (props) => {
-    console.log('Masters component props =>>>>>>   ', props);
+    console.log('Masters component props =>>>>>>   ', props.state.city);
     const {
         city
     } = props.state;

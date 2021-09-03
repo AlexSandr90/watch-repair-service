@@ -28,7 +28,16 @@ const Header = (props) => {
                 </li>
 
                 <li className='nav-item'>
+                    <NavLink
+                        to='/formik-form'
+                        exact
+                        activeClassName='li-active'
+                    >
+                        Formik Form
+                    </NavLink>
+                </li>
 
+                <li className='nav-item'>
                     <NavLink
                         to='/masters'
                         exact

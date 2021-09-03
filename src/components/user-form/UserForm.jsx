@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import './user-from.scss';
 import { useHistory } from 'react-router-dom';
 import { Input, Select, InputDate } from "./form-elements";
-import { Formik } from 'formik';
-import * as Yup from 'yup';
 
 const UserForm = ({ updateData, ...props }) => {
     const path = '/masters';
