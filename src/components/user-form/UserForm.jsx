@@ -1,13 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './user-from.scss';
-import {useHistory} from 'react-router-dom';
-import {Input, Select, InputDate} from "./form-elements";
+import { useHistory } from 'react-router-dom';
+import { Input, Select, InputDate } from "./form-elements";
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 
-const UserForm = ({updateData, ...props}) => {
+const UserForm = ({ updateData, ...props }) => {
     const path = '/masters';
     const history = useHistory();
 
-    const [ formFields, setFormFields ] = useState({
+    const [formFields, setFormFields] = useState({
         name: '',
         email: '',
         size: '',
@@ -15,7 +17,7 @@ const UserForm = ({updateData, ...props}) => {
         date: '',
         time: ''
     });
-    const [ errors, setErrors ] = useState({
+    const [errors, setErrors] = useState({
         nameError: 'Имя не может быть пустым',
         emailError: 'Email не может быть пустым',
         sizeError: 'Поле SIZE не может быть пустым',
@@ -23,7 +25,7 @@ const UserForm = ({updateData, ...props}) => {
         dateError: 'Выберите дату',
         timeError: 'Выберите время'
     });
-    const [ dirty, setDirty ] = useState({
+    const [dirty, setDirty] = useState({
         nameDirty: false,
         emailDirty: false,
         sizeDirty: false,
@@ -35,7 +37,7 @@ const UserForm = ({updateData, ...props}) => {
 
     const { nameError, emailError, sizeError, cityError, dateError, timeError } = errors;
     const { nameDirty, emailDirty, sizeDirty, cityDirty, dateDirty, timeDirty } = dirty;
-    const { name, email, size, city, date, time} = formFields;
+    const { name, email, size, city, date, time } = formFields;
 
     useEffect(() => {
         if (nameError || emailError || cityError || sizeError || dateError || timeError) {
@@ -48,85 +50,85 @@ const UserForm = ({updateData, ...props}) => {
     );
 
     const nameHandler = event => {
-        setFormFields({...formFields, name: event.target.value});
+        setFormFields({ ...formFields, name: event.target.value });
 
         if (event.target.value.length < 2 || event.target.value.length > 16) {
-            setErrors({...errors, nameError: 'Длина имени должна быть больше 2 и меньше 16 символов'});
+            setErrors({ ...errors, nameError: 'Длина имени должна быть больше 2 и меньше 16 символов' });
             if (!event.target.value) {
-                setErrors({...errors, nameError: 'Имя не может быть пустым'});
+                setErrors({ ...errors, nameError: 'Имя не может быть пустым' });
             }
         } else {
-            setErrors({...errors, nameError: ''});
+            setErrors({ ...errors, nameError: '' });
         }
     };
     const emailHandler = event => {
-        setFormFields({...formFields, email: event.target.value});
+        setFormFields({ ...formFields, email: event.target.value });
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
         if (!re.test(String(event.target.value).toLowerCase())) {
-            setErrors({...errors, emailError: 'Your email is not correct'});
+            setErrors({ ...errors, emailError: 'Your email is not correct' });
             if (!event.target.value) {
-                setErrors({...errors, emailError: 'Email не может быть пустым'});
+                setErrors({ ...errors, emailError: 'Email не может быть пустым' });
             }
         } else {
-            setErrors({...errors, emailError: ''});
+            setErrors({ ...errors, emailError: '' });
         }
     };
     const cityHandler = event => {
-        setFormFields({...formFields, city: event.target.value});
+        setFormFields({ ...formFields, city: event.target.value });
         if (!event.target.value) {
-            setErrors({...errors, cityError: 'Поле CITY не может быть пустым'});
+            setErrors({ ...errors, cityError: 'Поле CITY не может быть пустым' });
         } else {
-            setErrors({...errors, cityError: ''});
+            setErrors({ ...errors, cityError: '' });
         }
     };
     const sizeHandler = event => {
-        setFormFields({...formFields, size: event.target.value});
+        setFormFields({ ...formFields, size: event.target.value });
 
         if (!event.target.value) {
-            setErrors({...errors, sizeError: 'Поле SIZE не может быть пустым'});
+            setErrors({ ...errors, sizeError: 'Поле SIZE не может быть пустым' });
         } else {
-            setErrors({...errors, sizeError: ''});
+            setErrors({ ...errors, sizeError: '' });
         }
     };
     const dateHandler = event => {
-        setFormFields({...formFields, date: event.target.value});
+        setFormFields({ ...formFields, date: event.target.value });
 
         if (!event.target.value) {
-            setErrors({...errors, dateError: 'Выберите дату'});
+            setErrors({ ...errors, dateError: 'Выберите дату' });
         } else {
-            setErrors({...errors, dateError: ''});
+            setErrors({ ...errors, dateError: '' });
         }
     };
     const timeHandler = event => {
-        setFormFields({...formFields, time: event.target.value});
+        setFormFields({ ...formFields, time: event.target.value });
 
         if (!event.target.value) {
-            setErrors({...errors, timeError: 'Выберите время'});
+            setErrors({ ...errors, timeError: 'Выберите время' });
         } else {
-            setErrors({...errors, timeError: ''});
+            setErrors({ ...errors, timeError: '' });
         }
     };
 
     const blurHandler = event => {
         switch (event.target.name) {
             case 'name':
-                setDirty({...dirty, nameDirty: true});
+                setDirty({ ...dirty, nameDirty: true });
                 break;
             case 'email':
-                setDirty({...dirty, emailDirty: true});
+                setDirty({ ...dirty, emailDirty: true });
                 break;
             case 'city':
-                setDirty({...dirty, cityDirty: true});
+                setDirty({ ...dirty, cityDirty: true });
                 break;
             case 'size':
-                setDirty({...dirty, sizeDirty: true});
+                setDirty({ ...dirty, sizeDirty: true });
                 break;
             case 'date':
-                setDirty({...dirty, dateDirty: true});
+                setDirty({ ...dirty, dateDirty: true });
                 break;
             case 'time':
-                setDirty({...dirty, timeDirty: true});
+                setDirty({ ...dirty, timeDirty: true });
                 break;
             default:
                 break;
