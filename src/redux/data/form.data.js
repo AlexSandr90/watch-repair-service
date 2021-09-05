@@ -31,7 +31,11 @@ const formData = {
         {id: 5, city: 'Odesa'}, 
         {id: 6, city: 'Kharkiv'}
     ],
-    sizes: ['Small', 'Medium', 'Large']
+    sizes: [
+        { id: 1, size: 'Small' },
+        { id: 2, size: 'Medium' },
+        { id: 3, size: 'Large' }
+    ]
 
 };
 

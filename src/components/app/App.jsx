@@ -14,7 +14,7 @@ const App = (props) => {
     const [ state, setState ] = useState({});
     console.log('App masters ===>>> ', masters.form);
     const {form} = masters.form;
-    console.log(form)
+    console.log(form);
     return (
         <div className={classes.app}>
             <Header/>
@@ -23,7 +23,7 @@ const App = (props) => {
                     <Route exact path='/' render={() => <Home/> }/>
                     <Route axect path='/masters' render={() => <Masters state={state}/>}/>
                     <Route exact path='/user-form' render={() => <UserForm updateData={setState}/>}/>
-                    <Route exact path='/formik-form' render={() => <FormikForm state={masters.form}/>}/>
+                    <Route exact path='/formik-form' render={() => <FormikForm />}/>
                 </Switch>
             </main>
         </div>
