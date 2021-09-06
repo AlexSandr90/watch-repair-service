@@ -2,9 +2,13 @@ import React from 'react';
 import './masters.scss';
 import masters from "../../redux/data/masters.data";
 import Master from "./master";
+import { storage } from "../formik-form/FormikForm";
+
+console.log('Masters localStorage ===> ', storage);
 
 const Masters = (props) => {
     console.log('Masters component props =>>>>>>   ', props.state.city);
+    console.log('Masters localStorage ===> ', JSON.parse(storage.getItem('formikData')));
     const {
         city
     } = props.state;

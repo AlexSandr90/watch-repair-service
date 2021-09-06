@@ -15,7 +15,9 @@ const formSchema = yup.object().shape({
     .required('Required'),
     city: yup.string().required('Required'),
     size: yup.string().required('Required')
-})
+});
+
+export let storage = window.localStorage;
 
 const FormikForm = () => {
     const cities = useSelector(state => state.form.cities);
@@ -33,35 +35,37 @@ const FormikForm = () => {
                 date: '',
                 time: ''
             }}
-            validate={
-                values => {
-                    const errors = {};
-                    if (!values.email) {
-                        errors.email = 'Поле EMAIL не может быть пустым';
-                    } else if (!/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(values.email)) {
-                        errors.email = 'Invalid email adddres'
-                    }
-
-                    if (!values.name) {
-                        errors.name = 'Поле NAME не может быть пустым'
-                    } else if (values.name.length < 2 || values.name.length > 16) {
-                        errors.name = 'Длина имени должна быть больше 2 и меньше 16 символов'
-                    }
-
-                    if (!values.city) {
-                        errors.city = 'Поле CITY не может быть пустым'
-                    }
-
-                    if (!values.size) {
-                        errors.size = 'Поле SIZE не может быть пустым'
-                    }
-
-                    return errors;
-                }
-            }
+            validationSchema={formSchema}
+            // validate={
+            //     values => {
+            //         const errors = {};
+            //         if (!values.email) {
+            //             errors.email = 'Поле EMAIL не может быть пустым';
+            //         } else if (!/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(values.email)) {
+            //             errors.email = 'Invalid email adddres'
+            //         }
+            //
+            //         if (!values.name) {
+            //             errors.name = 'Поле NAME не может быть пустым'
+            //         } else if (values.name.length < 2 || values.name.length > 16) {
+            //             errors.name = 'Длина имени должна быть больше 2 и меньше 16 символов'
+            //         }
+            //
+            //         if (!values.city) {
+            //             errors.city = 'Поле CITY не может быть пустым'
+            //         }
+            //
+            //         if (!values.size) {
+            //             errors.size = 'Поле SIZE не может быть пустым'
+            //         }
+            //
+            //         return errors;
+            //     }
+            // }
             onSubmit={
                 values => {
-                    console.log(values)
+                    console.log(values);
+                    storage.setItem('formikData', JSON.stringify(values));
                 }
             }
         >
@@ -115,12 +119,16 @@ const FormikForm = () => {
                                     id='size'
                                     onChange={handleChange}
                                 >
-                                    <option disabled selected >Выберите</option>
+                                    <option disabled selected >Выберите размер часов</option>
                                     {
                                         sizes.map(size => {
                                             return (
-                                                <option value={size.size.toLowerCase()}
-                                                        key={size.id}>{size.size}</option>
+                                                <option
+                                                    value={size.size.toLowerCase()}
+                                                    key={size.id}
+                                                >
+                                                    {size.size}
+                                                </option>
                                             )
                                         })
                                     }
@@ -135,11 +143,16 @@ const FormikForm = () => {
                                     id="city"
                                     onChange={handleChange}
                                 >
+                                    <option disabled selected >Выберите город</option>
                                     {
                                         cities.map(city => {
                                             return (
-                                                <option value={city.city.toLowerCase()}
-                                                        key={city.id}>{city.city}</option>
+                                                <option
+                                                    value={city.city.toLowerCase()}
+                                                    key={city.id}
+                                                >
+                                                    {city.city}
+                                                </option>
                                             )
                                         })
                                     }
