@@ -1,8 +1,21 @@
 import React from 'react';
 import classes from './formik-form.module.scss';
 import {ErrorMessage, Field, Formik} from 'formik';
+import * as yup from 'yup';
 import { useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
+
+const formSchema = yup.object().shape({
+    name: yup.string()
+    .min(2, 'Too short!')
+    .max(16, 'Too long!')
+    .required('Required!'),
+    email: yup.string()
+    .email('Invalid email')
+    .required('Required'),
+    city: yup.string().required('Required'),
+    size: yup.string().required('Required')
+})
 
 const FormikForm = () => {
     const cities = useSelector(state => state.form.cities);
@@ -97,7 +110,12 @@ const FormikForm = () => {
 
                             <div className={classes.formItem}>
                                 <label htmlFor="size">Укажите размер часов</label>
-                                <select name='size' id='size'>
+                                <select 
+                                    name='size' 
+                                    id='size'
+                                    onChange={handleChange}
+                                >
+                                    <option disabled selected >Выберите</option>
                                     {
                                         sizes.map(size => {
                                             return (
@@ -112,7 +130,11 @@ const FormikForm = () => {
 
                             <div className={classes.formItem}>
                                 <label htmlFor="city">Укажите город</label>
-                                <select name="city" id="city">
+                                <select 
+                                    name="city" 
+                                    id="city"
+                                    onChange={handleChange}
+                                >
                                     {
                                         cities.map(city => {
                                             return (
