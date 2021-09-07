@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import classes from './formik-form.module.scss';
 import {ErrorMessage, Field, Formik} from 'formik';
 import * as yup from 'yup';
 import { useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css'
 
 const formSchema = yup.object().shape({
     name: yup.string()
@@ -22,6 +24,7 @@ export let storage = window.localStorage;
 const FormikForm = () => {
     const cities = useSelector(state => state.form.cities);
     const sizes = useSelector(state => state.form.sizes);
+    const [ startDate, setStartDate ] = useState((new Date()));
     const path = '/masters';
     const history = useHistory();
 
@@ -36,32 +39,6 @@ const FormikForm = () => {
                 time: ''
             }}
             validationSchema={formSchema}
-            // validate={
-            //     values => {
-            //         const errors = {};
-            //         if (!values.email) {
-            //             errors.email = 'Поле EMAIL не может быть пустым';
-            //         } else if (!/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(values.email)) {
-            //             errors.email = 'Invalid email adddres'
-            //         }
-            //
-            //         if (!values.name) {
-            //             errors.name = 'Поле NAME не может быть пустым'
-            //         } else if (values.name.length < 2 || values.name.length > 16) {
-            //             errors.name = 'Длина имени должна быть больше 2 и меньше 16 символов'
-            //         }
-            //
-            //         if (!values.city) {
-            //             errors.city = 'Поле CITY не может быть пустым'
-            //         }
-            //
-            //         if (!values.size) {
-            //             errors.size = 'Поле SIZE не может быть пустым'
-            //         }
-            //
-            //         return errors;
-            //     }
-            // }
             onSubmit={
                 values => {
                     console.log(values);
@@ -159,6 +136,12 @@ const FormikForm = () => {
                                 </select>
                             </div>
 
+                            <div className={classes.formItem}>
+                                <DatePicker
+                                    selected={startDate}
+                                    onChange={date => setStartDate(date)}
+                                />
+                            </div>
                             <button
                                 className={classes.formSubmit__btn}
                                 type='submit'
