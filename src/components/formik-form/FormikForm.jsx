@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import classes from './formik-form.module.scss';
-import {ErrorMessage, Field, Formik} from 'formik';
-import * as yup from 'yup';
+import {ErrorMessage, Field, Formik, useFormik} from 'formik';
+import * as Yup from 'yup';
 import { useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import DatePicker, {
@@ -15,16 +15,16 @@ import 'react-datepicker/dist/react-datepicker.css'
 
 registerLocale('es', es);
 
-const formSchema = yup.object().shape({
-    name: yup.string()
+const formSchema = Yup.object().shape({
+    name: Yup.string()
     .min(2, 'Too short!')
     .max(16, 'Too long!')
     .required('Required!'),
-    email: yup.string()
+    email: Yup.string()
     .email('Invalid email')
     .required('Required'),
-    city: yup.string().required('Required'),
-    size: yup.string().required('Required')
+    city: Yup.string().required('Required'),
+    size: Yup.string().required('Required')
 });
 
 export let storage = window.localStorage;
@@ -32,14 +32,15 @@ export let storage = window.localStorage;
 const FormikForm = () => {
     const cities = useSelector(state => state.form.cities);
     const sizes = useSelector(state => state.form.sizes);
-    // const [ startDate, setStartDate ] = useState('');
 
-    const [ startDate, setStartDate ] = useState(
-        setHours(setMinutes(new Date(), 60), 16)
-    );
+    const [ startDate, setStartDate ] = useState(new Date());
 
-        console.log(startDate)
-    
+    const filterPassedTime = (time) => {
+        const currentDate = new Date();
+        const selectedDate = new Date(time);
+        return currentDate.getTime() < selectedDate.getTime();
+    };
+
     const path = '/masters';
     const history = useHistory();
 
@@ -156,18 +157,16 @@ const FormikForm = () => {
                                 <DatePicker
                                     value={startDate}
                                     selected={startDate}
-
-                                    // onChange={handleDateChange}
                                     onChange={date => setStartDate(date)}
-                                    includeTimes={[
-                                        setHours(setMinutes(new Date(), 0), 17),
-                                        setHours(setMinutes(new Date(), 60), 18),
-                                        setHours(setMinutes(new Date(), 60), 19),
-                                        setHours(setMinutes(new Date(), 60), 20),
-                                    ]}
+                                    onBlur={handleBlur}
                                     showTimeSelect
-                                    // dateFormat="Pp"
-                                    dateFormat='MMMM d, yyyy h:mm aa'
+                                    timeFormat='HH:mm'
+                                    timeIntervals={60}
+                                    timeCaption='time'
+                                    dateFormat='MMMM d, yyyy h aa'
+                                    minDate={new Date()}
+                                    name='timeDate'
+                                    filterTime={filterPassedTime}
                                 />
 
                             </div>
