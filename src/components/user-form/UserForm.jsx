@@ -35,7 +35,7 @@ const UserForm = ({ updateData, ...props }) => {
 
     const { nameError, emailError, sizeError, cityError, dateError, timeError } = errors;
     const { nameDirty, emailDirty, sizeDirty, cityDirty, dateDirty, timeDirty } = dirty;
-    const { name, email, size, city, date, time } = formFields;
+    const { name, email, date, time } = formFields;
 
     useEffect(() => {
         if (nameError || emailError || cityError || sizeError || dateError || timeError) {

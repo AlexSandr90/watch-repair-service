@@ -4,8 +4,16 @@ import {ErrorMessage, Field, Formik} from 'formik';
 import * as yup from 'yup';
 import { useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
-import DatePicker from 'react-datepicker';
+import DatePicker, {
+    handleDateChange, 
+    registerLocale, 
+    setHours,
+    setMinutes
+} from 'react-datepicker';
+import es from 'date-fns/locale/es';
 import 'react-datepicker/dist/react-datepicker.css'
+
+registerLocale('es', es);
 
 const formSchema = yup.object().shape({
     name: yup.string()
@@ -24,7 +32,14 @@ export let storage = window.localStorage;
 const FormikForm = () => {
     const cities = useSelector(state => state.form.cities);
     const sizes = useSelector(state => state.form.sizes);
-    const [ startDate, setStartDate ] = useState((new Date()));
+    // const [ startDate, setStartDate ] = useState('');
+
+    const [ startDate, setStartDate ] = useState(
+        setHours(setMinutes(new Date(), 60), 16)
+    );
+
+        console.log(startDate)
+    
     const path = '/masters';
     const history = useHistory();
 
@@ -55,6 +70,7 @@ const FormikForm = () => {
                     handleBlur,
                     handleSubmit,
                     isSubmitting,
+
                 }) => {
                     return (
                         <form
@@ -138,9 +154,22 @@ const FormikForm = () => {
 
                             <div className={classes.formItem}>
                                 <DatePicker
+                                    value={startDate}
                                     selected={startDate}
+
+                                    // onChange={handleDateChange}
                                     onChange={date => setStartDate(date)}
+                                    includeTimes={[
+                                        setHours(setMinutes(new Date(), 0), 17),
+                                        setHours(setMinutes(new Date(), 60), 18),
+                                        setHours(setMinutes(new Date(), 60), 19),
+                                        setHours(setMinutes(new Date(), 60), 20),
+                                    ]}
+                                    showTimeSelect
+                                    // dateFormat="Pp"
+                                    dateFormat='MMMM d, yyyy h:mm aa'
                                 />
+
                             </div>
                             <button
                                 className={classes.formSubmit__btn}
