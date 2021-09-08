@@ -1,19 +1,12 @@
 import React, {useState} from 'react';
 import classes from './formik-form.module.scss';
-import {ErrorMessage, Field, Formik, useFormik} from 'formik';
+import {ErrorMessage, Field, Formik} from 'formik';
 import * as Yup from 'yup';
 import { useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
-import DatePicker, {
-    handleDateChange, 
-    registerLocale, 
-    setHours,
-    setMinutes
-} from 'react-datepicker';
-import es from 'date-fns/locale/es';
+import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'
 
-registerLocale('es', es);
 
 const formSchema = Yup.object().shape({
     name: Yup.string()
@@ -51,7 +44,7 @@ const FormikForm = () => {
                 email: '',
                 city: '',
                 size: '',
-                date: '',
+                date: startDate,
                 time: ''
             }}
             validationSchema={formSchema}
