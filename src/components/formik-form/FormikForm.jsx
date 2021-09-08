@@ -6,19 +6,7 @@ import { useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'
-
-
-const formSchema = Yup.object().shape({
-    name: Yup.string()
-    .min(2, 'Too short!')
-    .max(16, 'Too long!')
-    .required('Required!'),
-    email: Yup.string()
-    .email('Invalid email')
-    .required('Required'),
-    city: Yup.string().required('Required'),
-    size: Yup.string().required('Required')
-});
+import { formSchema } from "./schemas/form-schema";
 
 export let storage = window.localStorage;
 
@@ -27,6 +15,7 @@ const FormikForm = () => {
     const sizes = useSelector(state => state.form.sizes);
 
     const [ startDate, setStartDate ] = useState(new Date());
+    const [ currentDate, setCurrentDate ] = useState(startDate);
 
     const filterPassedTime = (time) => {
         const currentDate = new Date();
@@ -44,7 +33,7 @@ const FormikForm = () => {
                 email: '',
                 city: '',
                 size: '',
-                date: startDate,
+                date: currentDate,
                 time: ''
             }}
             validationSchema={formSchema}
@@ -149,8 +138,10 @@ const FormikForm = () => {
                             <div className={classes.formItem}>
                                 <DatePicker
                                     value={startDate}
-                                    selected={startDate}
-                                    onChange={date => setStartDate(date)}
+                                    // selected={startDate}
+                                    selected={currentDate}
+                                    // onChange={date => setStartDate(date)}
+                                    onChange={date => setCurrentDate(date)}
                                     onBlur={handleBlur}
                                     showTimeSelect
                                     timeFormat='HH:mm'
