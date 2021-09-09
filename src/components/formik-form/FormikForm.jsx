@@ -1,14 +1,16 @@
 import React, {useState} from 'react';
 import classes from './formik-form.module.scss';
 import {ErrorMessage, Field, Formik} from 'formik';
-import * as Yup from 'yup';
-import { useSelector } from "react-redux";
-import { useHistory } from 'react-router-dom';
+import {useSelector} from "react-redux";
+import {useHistory} from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'
-import { formSchema } from "./schemas/form-schema";
+import {formSchema} from "./schemas/form-schema";
 
 export let storage = window.localStorage;
+
+
+
 
 const FormikForm = () => {
     const cities = useSelector(state => state.form.cities);

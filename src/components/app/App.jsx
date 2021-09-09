@@ -8,6 +8,8 @@ import Masters from "../masters";
 import {Switch, Route} from "react-router-dom";
 import Home from "../home";
 
+
+
 const App = (props) => {
     const dispatch = useDispatch();
     const masters = useSelector(state => state);
@@ -15,10 +17,27 @@ const App = (props) => {
     console.log('App masters ===>>> ', masters.form);
     const {form} = masters.form;
     console.log(form);
+    const [ cities, setCIties ] = useState([])
+
+
+    const fetchCity = () => {
+        let res = fetch('https://shrouded-sea-24591.herokuapp.com/api/city')
+            .then(responce => responce.json())
+            .then(data => {
+                console.log(data);
+                setCIties([...data]);
+            });
+
+        return res;
+    }
+
+    
     return (
         <div className={classes.app}>
             <Header/>
             <main className={classes.main_wrap}>
+                <button onClick={fetchCity} >FETCH</button>
+                <button onClick={() => alert(cities)} >Paint cities</button>
                 <Switch>
                     <Route exact path='/' render={() => <Home/> }/>
                     <Route axect path='/masters' render={() => <Masters state={state}/>}/>
