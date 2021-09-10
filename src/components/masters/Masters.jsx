@@ -37,16 +37,7 @@ const Masters = (props) => {
                 />
             )
         }) :
-        <div style={{
-            margin: 'calc(50vh - 10%) auto',
-            fontSize: '1.5rem',
-            color: 'red',
-            display: 'flex',
-            flexDirection: 'column',
-            alignSelf: 'center',
-            alignItems: 'center',
-            justifyContent: 'center'
-        }}>
+        <div className='master'>
             Нет мастеров, соответствующих вашим критериям поиска
         </div>;
 

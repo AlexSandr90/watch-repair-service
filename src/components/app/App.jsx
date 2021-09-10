@@ -17,27 +17,42 @@ const App = (props) => {
     console.log('App masters ===>>> ', masters.form);
     const {form} = masters.form;
     console.log(form);
-    const [ cities, setCIties ] = useState([])
+    const [ cities, setCIties ] = useState([]);
 
 
     const fetchCity = () => {
-        let res = fetch('https://shrouded-sea-24591.herokuapp.com/api/city')
+        let res = fetch('https://shrouded-sea-24591.herokuapp.com/api/city', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
             .then(responce => responce.json())
             .then(data => {
-                console.log(data);
-                setCIties([...data]);
+                console.log('fetchCity:  <+= ', data);
+                setCIties(data);
             });
 
         return res;
     }
 
+    const apiCities = cities.length > 0 
+            ? cities.map(city => {
+                return (
+                    <li key={city._id} >{city.city_name}</li>
+                )
+            })
+            : null;
     
     return (
         <div className={classes.app}>
             <Header/>
             <main className={classes.main_wrap}>
-                <button onClick={fetchCity} >FETCH</button>
-                <button onClick={() => alert(cities)} >Paint cities</button>
+                <button onClick={fetchCity} >Paint FETCH cities</button>
+                <button onClick={() => setCIties([])} >Refresh</button>
+                <ul>
+                    { apiCities }
+                </ul>
                 <Switch>
                     <Route exact path='/' render={() => <Home/> }/>
                     <Route axect path='/masters' render={() => <Masters state={state}/>}/>
