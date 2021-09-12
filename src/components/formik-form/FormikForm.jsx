@@ -51,6 +51,7 @@ const FormikForm = () => {
                 values => {
                     console.log('values ==< ', values);
                     history.push(path);
+                    storage.clear();
                     storage.setItem('formikData', JSON.stringify(values));
                 }
             }

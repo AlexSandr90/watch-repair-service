@@ -6,19 +6,19 @@ const Master = props => {
         <div className="master" key={props.id}>
 
             <div className="name">
-                <span>Name:</span>
+                <span>Имя мастера:</span>
                 <span>{props.name}</span>
             </div>
             <div className="rating">
-                <span>Rating:</span>
+                <span>Рейтинг мастера:</span>
                 <span>{props.rating}</span>
             </div>
             <div className="city">
-                <span>City:</span>
+                <span>Город:</span>
                 <span>{props.city}</span>
             </div>
             <ul className="schedule">
-                Schedule:
+                Забранированное время:
                 {
                     props.schedule.map(schedule => {
                         return (

@@ -1,6 +1,5 @@
 import React from 'react';
 import './masters.scss';
-import masters from "../../redux/data/masters.data";
 import Master from "./master";
 import { storage } from "../formik-form/FormikForm";
 import { useSelector } from "react-redux";
@@ -8,8 +7,7 @@ import { useSelector } from "react-redux";
 const Masters = (props) => {
     const city = JSON.parse(storage.getItem('formikData')).city;
     const cities = useSelector(state => state.form.cities);
-    // const masters = useSelector(state => state.form.master);
-    console.log('masters ===<<< ', masters);
+    const masters = useSelector(state => state.master);
     console.log('Masters city === ', city);
     console.log('Masters cities ===>>>> ', cities);
     const {date} = props.state;
@@ -25,6 +23,7 @@ const Masters = (props) => {
         filterMastersArr.map(item => {
             return (
                 <Master
+                    key={item.id}
                     city={item.city}
                     name={item.name}
                     rating={item.rating}
