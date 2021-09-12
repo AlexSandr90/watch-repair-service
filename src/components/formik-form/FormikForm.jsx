@@ -10,14 +10,15 @@ import {formSchema} from "./schemas/form-schema";
 export let storage = window.localStorage;
 
 
-
-
 const FormikForm = () => {
     const cities = useSelector(state => state.form.cities);
     const sizes = useSelector(state => state.form.sizes);
 
     const [ startDate, setStartDate ] = useState(new Date());
     const [ currentDate, setCurrentDate ] = useState(startDate);
+
+    console.log('startDate  =>> ', startDate);
+    console.log('currentDate  =>> ', currentDate);
 
     const filterPassedTime = (time) => {
         const currentDate = new Date();
@@ -27,6 +28,13 @@ const FormikForm = () => {
 
     const path = '/masters';
     const history = useHistory();
+
+    const handleSubmitForm = event => {
+        event.preventDefault();
+
+        history.push(path);
+
+    };
 
     return (
         <Formik
@@ -41,7 +49,8 @@ const FormikForm = () => {
             validationSchema={formSchema}
             onSubmit={
                 values => {
-                    console.log(values);
+                    console.log('values ==< ', values);
+                    history.push(path);
                     storage.setItem('formikData', JSON.stringify(values));
                 }
             }
@@ -54,8 +63,6 @@ const FormikForm = () => {
                     handleChange,
                     handleBlur,
                     handleSubmit,
-                    isSubmitting,
-
                 }) => {
                     return (
                         <form
@@ -139,10 +146,10 @@ const FormikForm = () => {
 
                             <div className={classes.formItem}>
                                 <DatePicker
-                                    value={startDate}
-                                    // selected={startDate}
+                                    className={classes.formDatepicker}
+                                    // value={startDate}
+                                    value={currentDate}
                                     selected={currentDate}
-                                    // onChange={date => setStartDate(date)}
                                     onChange={date => setCurrentDate(date)}
                                     onBlur={handleBlur}
                                     showTimeSelect
@@ -159,7 +166,9 @@ const FormikForm = () => {
                             <button
                                 className={classes.formSubmit__btn}
                                 type='submit'
-                                disabled={isSubmitting}
+                                // disabled={isSubmitting}
+                                // onClick={handleSubmitForm}
+                                // onChange={event => setStartDate(event.target.value)}
                             >
                                 Submit
                             </button>

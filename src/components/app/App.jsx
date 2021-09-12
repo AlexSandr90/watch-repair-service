@@ -14,9 +14,9 @@ const App = (props) => {
     const dispatch = useDispatch();
     const masters = useSelector(state => state);
     const [ state, setState ] = useState({});
-    console.log('App masters ===>>> ', masters.form);
+    // console.log('App masters ===>>> ', masters.form);
     const {form} = masters.form;
-    console.log(form);
+    // console.log(form);
     const [ cities, setCIties ] = useState([]);
 
 
@@ -29,12 +29,11 @@ const App = (props) => {
         })
             .then(responce => responce.json())
             .then(data => {
-                console.log('fetchCity:  <+= ', data);
                 setCIties(data);
             });
 
         return res;
-    }
+    };
 
     const apiCities = cities.length > 0 
             ? cities.map(city => {

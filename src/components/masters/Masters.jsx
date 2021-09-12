@@ -3,26 +3,21 @@ import './masters.scss';
 import masters from "../../redux/data/masters.data";
 import Master from "./master";
 import { storage } from "../formik-form/FormikForm";
-
-
-console.log('Masters localStorage ===> ', storage);
+import { useSelector } from "react-redux";
 
 const Masters = (props) => {
-    console.log('Masters component props =>>>>>>   ', props.state.city);
-    console.log('Masters localStorage ===> ', JSON.parse(storage.getItem('formikData')));
-    const {
-        city
-    } = props.state;
+    const city = JSON.parse(storage.getItem('formikData')).city;
+    const cities = useSelector(state => state.form.cities);
+    // const masters = useSelector(state => state.form.master);
+    console.log('masters ===<<< ', masters);
+    console.log('Masters city === ', city);
+    console.log('Masters cities ===>>>> ', cities);
     const {date} = props.state;
     const filterMastersArr = [];
     console.log('filterMastersArr => ', filterMastersArr);
     masters.map(master => {
-       if (master.city === city) {
-           master.schedule.map(item => {
-               if (item.date === date) {
-                   filterMastersArr.push(master)
-               }
-           })
+       if (master.city.toLowerCase() === city) {
+           filterMastersArr.push(master);
        }
     });
 
