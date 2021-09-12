@@ -10,14 +10,10 @@ import Home from "../home";
 
 
 
-const App = (props) => {
+const App = () => {
     const dispatch = useDispatch();
-    const masters = useSelector(state => state);
     const [ state, setState ] = useState({});
-    // console.log('App masters ===>>> ', masters.form);
-    const {form} = masters.form;
-    // console.log(form);
-    const [ cities, setCIties ] = useState([]);
+    const [ cities, setCities ] = useState([]);
 
 
     const fetchCity = () => {
@@ -29,7 +25,7 @@ const App = (props) => {
         })
             .then(responce => responce.json())
             .then(data => {
-                setCIties(data);
+                setCities(data);
             });
 
         return res;
@@ -48,7 +44,7 @@ const App = (props) => {
             <Header/>
             <main className={classes.main_wrap}>
                 <button onClick={fetchCity} >Paint FETCH cities</button>
-                <button onClick={() => setCIties([])} >Refresh</button>
+                <button onClick={() => setCities([])} >Refresh</button>
                 <ul>
                     { apiCities }
                 </ul>
